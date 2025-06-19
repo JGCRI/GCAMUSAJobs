@@ -25,8 +25,8 @@ library(knitr)
 # Step1: read in GCAM output
 This step reads in GCAM output of interest in alternative file types.
 
-Use a local GCAM output database 
-```{r Step1, warning=FALSE}
+Use a local GCAM output database
+```{r Step1, warning=FALSE, eval = FALSE}
 prj <- ReadGCAM(filetype = 'db',
                         input_path = "C:/GODEEP/GCAM7/output",
                         db_name = "database_basexdbGCAM-USA_Ref",
@@ -35,7 +35,7 @@ prj <- ReadGCAM(filetype = 'db',
 ```
 
 Use a local project data
-```{r, warning=FALSE}
+```{r, warning=FALSE, eval = FALSE}
 prj <- ReadGCAM(filetype = 'prj',
                 input_path = "C:/GODEEP/",
                 prj_name = "package.dat")
