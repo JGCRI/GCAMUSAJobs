@@ -49,7 +49,7 @@ GCAM_EJ <- function(prj){
   # use the input to query correct rooftop PV elec_gen output
   elec_input %>%
      filter(grepl("rooftop", subsector)) %>%
-     filter(input !="backup_electricity") %>%
+     filter(input =="distributed_solar") %>%
      group_by(scenario, region, subsector, technology, input, Year, Units) %>%
      summarise(value = sum(value), .groups = "drop") ->
     elec_input_RTPV
