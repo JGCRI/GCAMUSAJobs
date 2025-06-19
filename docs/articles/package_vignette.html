@@ -93,14 +93,7 @@ types.</p>
 <span>                        input_path <span class="op">=</span> <span class="st">"C:/GODEEP/GCAM7/output"</span>,</span>
 <span>                        db_name <span class="op">=</span> <span class="st">"database_basexdbGCAM-USA_Ref"</span>,</span>
 <span>                        scen_name <span class="op">=</span> <span class="st">"GCAM-USA_Ref"</span>, <span class="co"># this needs to match the scenario name specified in the DB</span></span>
-<span>                        prj_name <span class="op">=</span> <span class="st">"mydata.dat"</span><span class="op">)</span> <span class="co"># you name it</span></span>
-<span><span class="co">#&gt; Database scenarios:  GCAM-USA_Ref</span></span>
-<span><span class="co">#&gt; New names:</span></span>
-<span><span class="co">#&gt; Scenario GCAM-USA_Ref does not exist in this project.  Creating.</span></span>
-<span><span class="co">#&gt; New names:</span></span>
-<span><span class="co">#&gt; New names:</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> `subsector` -&gt; `subsector...5`</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> `subsector` -&gt; `subsector...6`</span></span></code></pre></div>
+<span>                        prj_name <span class="op">=</span> <span class="st">"mydata.dat"</span><span class="op">)</span> <span class="co"># you name it</span></span></code></pre></div>
 <p>Use a local project data</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">prj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ReadGCAM.html">ReadGCAM</a></span><span class="op">(</span>filetype <span class="op">=</span> <span class="st">'prj'</span>,</span>
@@ -126,7 +119,8 @@ retirements: <strong>retirements</strong>,
 <strong>natural_retire</strong>, <strong>early_retire</strong>,
 <strong>early_ret_adj</strong>, and <strong>ret_adj</strong>. The “_adj”
 activities indicate different methods of calculation (net vs. total, see
-Step 4). Please refer to documentation (insert a link) for details.</p>
+Step 4). Please refer to documentation (<a href="https://github.com/JGCRI/GCAMUSAJobs/blob/paper/docs/tutorials/Documentation_GCAMUSAJobs.docx" class="external-link uri">https://github.com/JGCRI/GCAMUSAJobs/blob/paper/docs/tutorials/Documentation_GCAMUSAJobs.docx</a>)
+for details.</p>
 <p>The power generation output is annual, broken down by state, fuel
 type, and technology. This step takes about 20 seconds to execute and
 generate output for a given scenario.</p>
@@ -261,8 +255,8 @@ methods</strong></p>
 <h2 id="step5-plot-employment-factor">Step5: plot employment factor<a class="anchor" aria-label="anchor" href="#step5-plot-employment-factor"></a>
 </h2>
 <p>This step plots the employment factor from the JEDI (<a href="https://www.nrel.gov/analysis/jedi/models.html" class="external-link uri">https://www.nrel.gov/analysis/jedi/models.html</a>) model.
-Please refer to the documentation (<strong>insert a link</strong>) for
-details. Each point represents the employment factor of a state.</p>
+Please refer to the documentation (<a href="https://github.com/JGCRI/GCAMUSAJobs/blob/paper/docs/tutorials/Documentation_GCAMUSAJobs.docx" class="external-link uri">https://github.com/JGCRI/GCAMUSAJobs/blob/paper/docs/tutorials/Documentation_GCAMUSAJobs.docx</a>)
+for details. Each point represents the employment factor of a state.</p>
 <p>Running the function with no argument plots employment factors of all
 states.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
