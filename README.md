@@ -75,7 +75,7 @@ power sector jobs. `GCAMUSAJobs` extends GCAM-USA functionality by
 (2) calculating jobs associated with those activities, including jobs in operation and maintenance (O&M), construction, and decommissioning. 
 
 <div style="text-align: center">
-  <img src="images/workflow.jpg" width="100%">
+  <img src="man/figures/workflow.jpg" width="100%">
   <p><em>Workflow of GCAMUSAJobs</em></p>
 </div>
 
