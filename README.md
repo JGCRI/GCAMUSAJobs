@@ -27,11 +27,9 @@
 
 Di Sheng, Brian O'Neill, Stephanie Waldhoff, and Matthew Binsted. 2025. GCAMUSAJob: 
 An R package for employment projections based on GCAM-USA power sector outcomes. 
-(In progress) Journal of Open Source Software, DOI: XXXX
+(In progress) *Journal of Open Source Software*, DOI: XXXX
 
 [Back to Contents](#Contents)
-
-<br />
 
 <br />
 
@@ -44,8 +42,6 @@ An R package for employment projections based on GCAM-USA power sector outcomes.
 - Webpage hosting additional details: https://jgcri.github.io/GCAMUSAJobs/
 
 [Back to Contents](#Contents)
-
-<br />
 
 <br />
 
@@ -80,6 +76,7 @@ power sector jobs. `GCAMUSAJobs` extends GCAM-USA functionality by
 
 *Workflow of GCAMUSAJobs*
 
+
 `GCAMUSAJobs` utilizes GCAM-USA annual electricity generation outputs to estimate underlying capacity levels based on assumptions about capacity factors 
 and calculate associated power sector jobs based on employment factors. The employment factor represents the average number of jobs created per unit of 
 power plant activity (e.g., jobs per gigawatt). This method is widely used in the relevant literature<sup>1,2</sup>. `GCAMUSAJobs` adopts employment factors from 
@@ -95,18 +92,6 @@ This functionality supports the need for assessing the distributional labor impa
 
 <!-------------------------->
 <!-------------------------->
-# <a name="Citation"></a>Citation
-<!-------------------------->
-<!-------------------------->
-
-
-[Back to Contents](#Contents)
-
-<br />
-
-
-<!-------------------------->
-<!-------------------------->
 # <a name="InstallationGuides"></a>Installation Guides
 <!-------------------------->
 <!-------------------------->
@@ -116,14 +101,7 @@ This functionality supports the need for assessing the distributional labor impa
     - R (https://www.r-project.org/)
     - R studio (https://www.rstudio.com/)
 
-2. For Linux users, install following libraries:
-
-```
-sudo apt install build-essential libcurl4-gnutls-dev libxml2-dev libssl-dev
-sudo apt-get install libxml2-dev
-```
-    
-3. Open R studio:
+2. Open R studio:
 
 ```
 install.packages('devtools')
@@ -135,14 +113,36 @@ devtools::install_github('JGCRI/GCAMUSAJobs')
 
 <br />
 
-
 <!-------------------------->
 <!-------------------------->
 # <a name="How-toGuides"></a>How-to Guides
 <!-------------------------->
 <!-------------------------->
 
-- [Package vignette](https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html)
+See [Package vignette](https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html) for a step-by-step demonstration of how to use the package. 
+In general, this package generates data tables and visualizations related to power generation and job impacts using GCAM-USA model outputs. The workflow 
+proceeds through a series of functions, each building on the output of the previous one. Here are the key processing functions:
+
+| Function   | Purpose                                                                                                                                                                                                                                                                          |
+|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GCAM_EJ()  | Takes GCAM-USA output as input and calculates average annual electricity generation (in exajoules or EJ), broken down by state, fuel type, technology, and activity.                                                                                                             |
+| GCAM_GW()  | Converts the output of GCAM_EJ() into average annual capacity levels (in gigawatts or GW) by state, fuel, technology, and activity (e.g., operation, addition, retirement). Supports both the “Total” and “Net” methods for dealing with simultaneous additions and retirements. |
+| GCAM_JOB() | Uses GCAM_GW() results to compute average annual direct job estimates, disaggregated by state, fuel type, and job type (e.g., construction, O&M, decommissioning). Users can select between the “Total” or “Net” methods (default is “Total”).                                   |
+
+Details on Methods can be found [here](https://jgcri.github.io/GCAMUSAJobs/)
+
+
+Here are the key visualization functions:
+
+| Function        | Description                                                                                                                                                                                                                                            |
+|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| PLOT_EF()       | Plots annual average employment factors (EFs) during the project period. Assumes 5-year decommissioning periods for all fuels, while construction durations vary across fuels. O&M EFs are shown on an annual basis during the lifetime of a facility. |
+| PLOT_GW()       | Plots average annual capacity levels by activity and fuel type over years. Uses the output from GCAM_GW().                                                                                                                                             |
+| PLOT_JOB()      | Plots average annual direct power sector jobs by fuel and job type over years. Uses GCAM_JOB() output.                                                                                                                                                 |
+| PLOT_JOB_TYPE() | Plots direct jobs by job type (e.g., construction, O&M) aggregated across all fuels for a selected year.                                                                                                                                               |
+| MAP_JOB()       | Plots a map of state-level total power sector direct jobs for a selected year.                                                                                                                                                                         |
+
+Note that all of these PLOT_* functions will produce results either for an individual state or for the U.S. as a whole.
 
 [Back to Contents](#Contents)
 
@@ -154,9 +154,21 @@ devtools::install_github('JGCRI/GCAMUSAJobs')
 <!-------------------------->
 <!-------------------------->
 
-`GCAMUSAJobs`, by default, works with GCAM-USA v7.1 , and is compatible with outcomes with GCAM v6 or later versions conditional updated GCAM-USA assumption input. `GCAMUSAJobs` provides annual average job estimates during the 5-year window of a model timestep.
-
+`GCAMUSAJobs`, by default, works with GCAM-USA v7.1, and is compatible with GCAM v6 or later versions conditional on updated [GCAM-USA assumption input](https://jgcri.github.io/GCAMUSAJobs/) 
+(e.g., plant retirement assumptions), as this package uses three main inputs: GCAM-USA model outputs, GCAM-USA input data and assumptions, and 
+employment factors from the JEDI model. More details can be found [here](https://jgcri.github.io/GCAMUSAJobs/).
 
 [Back to Contents](#Contents)
 
 <br />
+
+<!-------------------------->
+<!-------------------------->
+# <a name="References"></a>References
+<!-------------------------->
+<!-------------------------->
+
+1.	Rutovitz, J., Dominish, E. & Downes, J. Calculating global energy sector jobs: 2015 methodology. (2015).
+2.	Mayfield, E., Jenkins, J., Larson, E. & Greig, C. Labor pathways to achieve net-zero emissions in the United States by mid-century. *Energy Policy* 177, 113516 (2023).
+3.	Xie, J. J., Martin, M., Rogelj, J. & Staffell, I. Distributional labour challenges and opportunities for decarbonizing the US power system. *Nat. Clim. Change* 13, 1203–1212 (2023).
+4.	Jacobson, M. Z. et al. 100% Clean and Renewable Wind, Water, and Sunlight All-Sector Energy Roadmaps for 139 Countries of the World. *Joule* 1, 108–121 (2017).
