@@ -39,7 +39,7 @@ An R package for employment projections based on GCAM-USA power sector outcomes.
 <!-------------------------->
 <!-------------------------->
 
-- Webpage hosting additional details: https://jgcri.github.io/GCAMUSAJobs/
+Webpage hosting additional details: https://jgcri.github.io/GCAMUSAJobs/
 
 [Back to Contents](#Contents)
 
@@ -72,10 +72,12 @@ power sector jobs. `GCAMUSAJobs` extends GCAM-USA functionality by
 (1) estimating the power plant capacity levels of different activities – operational capacity, capacity addition, and retirement; and 
 (2) calculating jobs associated with those activities, including jobs in operation and maintenance (O&M), construction, and decommissioning. 
 
-![Workflow of GCAMUSAJobs](images/workflow.jpg)
+<div style="text-align: center">
+  <img src="images/workflow.jpg" width="100%">
+  <p><em>Workflow of GCAMUSAJobs</em></p>
+</div>
 
-*Workflow of GCAMUSAJobs*
-
+<br />
 
 `GCAMUSAJobs` utilizes GCAM-USA annual electricity generation outputs to estimate underlying capacity levels based on assumptions about capacity factors 
 and calculate associated power sector jobs based on employment factors. The employment factor represents the average number of jobs created per unit of 
@@ -123,16 +125,23 @@ See [Package vignette](https://jgcri.github.io/GCAMUSAJobs/articles/package_vign
 In general, this package generates data tables and visualizations related to power generation and job impacts using GCAM-USA model outputs. The workflow 
 proceeds through a series of functions, each building on the output of the previous one. Here are the key processing functions:
 
+<br />
+
 | Function   | Purpose                                                                                                                                                                                                                                                                          |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | GCAM_EJ()  | Takes GCAM-USA output as input and calculates average annual electricity generation (in exajoules or EJ), broken down by state, fuel type, technology, and activity.                                                                                                             |
 | GCAM_GW()  | Converts the output of GCAM_EJ() into average annual capacity levels (in gigawatts or GW) by state, fuel, technology, and activity (e.g., operation, addition, retirement). Supports both the “Total” and “Net” methods for dealing with simultaneous additions and retirements. |
 | GCAM_JOB() | Uses GCAM_GW() results to compute average annual direct job estimates, disaggregated by state, fuel type, and job type (e.g., construction, O&M, decommissioning). Users can select between the “Total” or “Net” methods (default is “Total”).                                   |
 
-Details on Methods can be found [here](https://jgcri.github.io/GCAMUSAJobs/)
+<br />
 
+Details on Methods can be found [here](https://jgcri.github.io/GCAMUSAJobs/).
+
+<br />
 
 Here are the key visualization functions:
+
+<br />
 
 | Function        | Description                                                                                                                                                                                                                                            |
 |-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -141,6 +150,8 @@ Here are the key visualization functions:
 | PLOT_JOB()      | Plots average annual direct power sector jobs by fuel and job type over years. Uses GCAM_JOB() output.                                                                                                                                                 |
 | PLOT_JOB_TYPE() | Plots direct jobs by job type (e.g., construction, O&M) aggregated across all fuels for a selected year.                                                                                                                                               |
 | MAP_JOB()       | Plots a map of state-level total power sector direct jobs for a selected year.                                                                                                                                                                         |
+
+<br />
 
 Note that all of these PLOT_* functions will produce results either for an individual state or for the U.S. as a whole.
 
