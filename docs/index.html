@@ -4,72 +4,54 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Tool for project jobs based on GCAM-USA results • GCAMUSAJobs</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Tool for project jobs based on GCAM-USA results">
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.0/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Tool for project jobs based on GCAM-USA results">
+<meta name="description" content="This packge projects state-level power sector employment by fuel type and occupation, based on GCAM-USA power sector output.">
 <meta property="og:description" content="This packge projects state-level power sector employment by fuel type and occupation, based on GCAM-USA power sector output.">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <div class="container template-home">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">GCAMUSAJobs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1</span>
-      </span>
-    </div>
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
+    <a class="navbar-brand me-2" href="index.html">GCAMUSAJobs</a>
 
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="articles/package_vignette.html">package_vignette</a>
-    </li>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1</small>
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/package_vignette.html">package_vignette</a></li>
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
+</form></li>
+      </ul>
 </div>
-<!--/.nav-collapse -->
+
+
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
-
-
-
-      </header><div class="row">
-  <div class="contents col-md-9">
-
-<div class="section level1">
-<div class="page-header"><h1 id="gcamusajobs">GCAMUSAJobs<a class="anchor" aria-label="anchor" href="#gcamusajobs"></a>
+</nav><div class="container template-home">
+<div class="row">
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="gcamusajobs-an-r-package-for-employment-projections-based-on-gcam-usa-power-sector-outcomes">GCAMUSAJobs: An R package for employment projections based on GCAM-USA power sector outcomes<a class="anchor" aria-label="anchor" href="#gcamusajobs-an-r-package-for-employment-projections-based-on-gcam-usa-power-sector-outcomes"></a>
 </h1></div>
 <p><br></p>
 <!-------------------------->
@@ -82,42 +64,15 @@
 <!-------------------------->
 <!-------------------------->
 <ul>
-<li><a href="#KeyLinks">Key Links</a></li>
-<li><a href="#Introduction">Introduction</a></li>
 <li><a href="#Citation">Citation</a></li>
+<li><a href="#KeyLinks">Key Links</a></li>
+<li><a href="#RelatedPublications">Related Publications</a></li>
+<li><a href="#Overview">Overview</a></li>
 <li><a href="#InstallGuides">Installation Guide</a></li>
 <li><a href="#How-toGuides">How-to Guides</a></li>
 <li><a href="#UserNotice">User Notice</a></li>
+<li><a href="#References">References</a></li>
 </ul>
-<p><br></p>
-<!-------------------------->
-<!-------------------------->
-</div>
-<div class="section level1">
-<h1 id="key-links">
-<a name="KeyLinks"></a>Key Links<a class="anchor" aria-label="anchor" href="#key-links"></a>
-</h1>
-<!-------------------------->
-<!-------------------------->
-<ul>
-<li>Github: <a href="https://github.com/JGCRI/GCAMUSAJobs/tree/paper" class="external-link uri">https://github.com/JGCRI/GCAMUSAJobs/tree/paper</a>
-</li>
-<li>Webpage: <a href="https://jgcri.github.io/GCAMUSAJobs/" class="external-link uri">https://jgcri.github.io/GCAMUSAJobs/</a>
-</li>
-</ul>
-<p><a href="#Contents">Back to Contents</a></p>
-<p><br></p>
-<!-------------------------->
-<!-------------------------->
-</div>
-<div class="section level1">
-<h1 id="introduction">
-<a name="Introduction"></a>Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
-</h1>
-<!-------------------------->
-<!-------------------------->
-<p><code>GCAMUSAJobs</code> was developed to post-process electric power projections from GCAM-USA, enabling the estimation of future power sector jobs at the state-level by generation technology and job type. GCAMUSAJobs extends GCAM-USA functionality by (1) estimating the capacity levels of different activities – operational capacity, capacity addition, and retirement; and (2) calculating jobs associated with production activities, including those in operation and maintenance (O&amp;M), construction, and decommissioning.</p>
-<p><a href="#Contents">Back to Contents</a></p>
 <p><br></p>
 <!-------------------------->
 <!-------------------------->
@@ -128,6 +83,52 @@
 </h1>
 <!-------------------------->
 <!-------------------------->
+<p>Di Sheng, Brian O’Neill, Stephanie Waldhoff, and Matthew Binsted. 2025. GCAMUSAJob: An R package for employment projections based on GCAM-USA power sector outcomes. (In progress) <em>Journal of Open Source Software</em>, DOI: XXXX</p>
+<p><a href="#Contents">Back to Contents</a></p>
+<p><br></p>
+<!-------------------------->
+<!-------------------------->
+</div>
+<div class="section level1">
+<h1 id="key-links">
+<a name="KeyLinks"></a>Key Links<a class="anchor" aria-label="anchor" href="#key-links"></a>
+</h1>
+<!-------------------------->
+<!-------------------------->
+<p>GitHub Repo: <a href="https://jgcri.github.io/GCAMUSAJobs/" class="uri">https://jgcri.github.io/GCAMUSAJobs/</a></p>
+<p>Website: <a href="https://jgcri.github.io/GCAMUSAJobs/" class="uri">https://jgcri.github.io/GCAMUSAJobs/</a></p>
+<p><a href="#Contents">Back to Contents</a></p>
+<p><br></p>
+<!-------------------------->
+<!-------------------------->
+</div>
+<div class="section level1">
+<h1 id="related-publications">
+<a name="RelatedPublications"></a>Related Publications<a class="anchor" aria-label="anchor" href="#related-publications"></a>
+</h1>
+<!-------------------------->
+<!-------------------------->
+<p>Kennedy, K.M., S. Vo, K. Vangelov, B. Buddi, S. Smith, J. Lou, R. Cui, and N. Hultman (2024). “The Renewable Energy Transition in Maryland: Implications for Energy Generating Facilities and Small Businesses.” Center for Global Sustainability, University of Maryland. 50 pp.</p>
+<p><a href="#Contents">Back to Contents</a></p>
+<p><br></p>
+<!-------------------------->
+<!-------------------------->
+</div>
+<div class="section level1">
+<h1 id="overview">
+<a name="Overview"></a>Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h1>
+<!-------------------------->
+<!-------------------------->
+<p><code>GCAMUSAJobs</code> aims to provide employment projections for the power sector based on GCAM-USA output. Specifically, this package was developed to post-process electric power projections from <a href="https://jgcri.github.io/gcam-doc/gcam-usa.html" class="external-link">GCAM-USA</a>, enabling the estimation of future power sector jobs at the state-level by generation technology and job type. Currently, GCAM-USA does not calculate power sector jobs. <code>GCAMUSAJobs</code> extends GCAM-USA functionality by (1) estimating the power plant capacity levels of different activities – operational capacity, capacity addition, and retirement; and (2) calculating jobs associated with those activities, including jobs in operation and maintenance (O&amp;M), construction, and decommissioning.</p>
+<div style="text-align: center">
+<img src="reference/figures/workflow.jpg" width="100%"><p>
+<em>Workflow of GCAMUSAJobs</em>
+</p>
+</div>
+<p><br></p>
+<p><code>GCAMUSAJobs</code> utilizes GCAM-USA annual electricity generation outputs to estimate underlying capacity levels based on assumptions about capacity factors and calculate associated power sector jobs based on employment factors. The employment factor represents the average number of jobs created per unit of power plant activity (e.g., jobs per gigawatt). This method is widely used in the relevant literature<sup>1,2</sup>. <code>GCAMUSAJobs</code> adopts employment factors from NREL’s Jobs &amp; Economic Development Impacts <a href="https://www.nrel.gov/analysis/jedi/models.html" class="external-link">(JEDI)</a> model, which has been broadly used in the literature<sup>1,3,4</sup>. The tool focuses on estimating direct jobs in the power sector, meaning employment directly involved in the construction, operation, or decommissioning of power plants, as opposed to indirect or induced jobs in the broader economy.</p>
+<p>This functionality supports the need for assessing the distributional labor impacts of energy system transition.</p>
 <p><a href="#Contents">Back to Contents</a></p>
 <p><br></p>
 <!-------------------------->
@@ -147,12 +148,7 @@
 <li>R studio (<a href="https://www.rstudio.com/" class="external-link uri">https://www.rstudio.com/</a>)</li>
 </ul>
 </li>
-<li><p>For Linux users, install following libraries:</p></li>
-</ol>
-<pre><code>sudo apt install build-essential libcurl4-gnutls-dev libxml2-dev libssl-dev
-sudo apt-get install libxml2-dev</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Open R studio:</li>
+<li><p>Open R studio:</p></li>
 </ol>
 <pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'devtools'</span><span class="op">)</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'JGCRI/rgcam'</span><span class="op">)</span></span>
@@ -168,9 +164,67 @@ sudo apt-get install libxml2-dev</code></pre>
 </h1>
 <!-------------------------->
 <!-------------------------->
-<ul>
-<li><a href="https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html" class="external-link">Package vignette</a></li>
-</ul>
+<p>See <a href="https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html">Package vignette</a> for a step-by-step demonstration of how to use the package. In general, this package generates data tables and visualizations related to power generation and job impacts using GCAM-USA model outputs. The workflow proceeds through a series of functions, each building on the output of the previous one. Here are the key processing functions:</p>
+<table class="table">
+<colgroup>
+<col width="4%">
+<col width="95%">
+</colgroup>
+<thead><tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>GCAM_EJ()</td>
+<td>Takes GCAM-USA output as input and calculates average annual electricity generation (in exajoules or EJ), broken down by state, fuel type, technology, and activity.</td>
+</tr>
+<tr>
+<td>GCAM_GW()</td>
+<td>Converts the output of GCAM_EJ() into average annual capacity levels (in gigawatts or GW) by state, fuel, technology, and activity (e.g., operation, addition, retirement). Supports both the “Total” and “Net” methods for dealing with simultaneous additions and retirements.</td>
+</tr>
+<tr>
+<td>GCAM_JOB()</td>
+<td>Uses GCAM_GW() results to compute average annual direct job estimates, disaggregated by state, fuel type, and job type (e.g., construction, O&amp;M, decommissioning). Users can select between the “Total” or “Net” methods (default is “Total”).</td>
+</tr>
+</tbody>
+</table>
+<p><em>Details on Methods can be found <a href="https://jgcri.github.io/GCAMUSAJobs/">here</a>.</em></p>
+<p><br></p>
+<p>Here are the key visualization functions:</p>
+<table class="table">
+<colgroup>
+<col width="6%">
+<col width="93%">
+</colgroup>
+<thead><tr>
+<th>Function</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>PLOT_EF()</td>
+<td>Plots annual average employment factors (EFs) during the project period. Assumes 5-year decommissioning periods for all fuels, while construction durations vary across fuels. O&amp;M EFs are shown on an annual basis during the lifetime of a facility.</td>
+</tr>
+<tr>
+<td>PLOT_GW()</td>
+<td>Plots average annual capacity levels by activity and fuel type over years. Uses the output from GCAM_GW().</td>
+</tr>
+<tr>
+<td>PLOT_JOB()</td>
+<td>Plots average annual direct power sector jobs by fuel and job type over years. Uses GCAM_JOB() output.</td>
+</tr>
+<tr>
+<td>PLOT_JOB_TYPE()</td>
+<td>Plots direct jobs by job type (e.g., construction, O&amp;M) aggregated across all fuels for a selected year.</td>
+</tr>
+<tr>
+<td>MAP_JOB()</td>
+<td>Plots a map of state-level total power sector direct jobs for a selected year.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note that all of these PLOT_ functions will produce results either for an individual state or for the U.S. as a whole.</em></p>
 <p><a href="#Contents">Back to Contents</a></p>
 <p><br></p>
 <!-------------------------->
@@ -182,15 +236,28 @@ sudo apt-get install libxml2-dev</code></pre>
 </h1>
 <!-------------------------->
 <!-------------------------->
-<p><code>GCAMUSAJobs</code>, by default, works with GCAM-USA v7.1 , and is compatible with outcomes with GCAM v6 or later versions conditional updated GCAM-USA assumption input. <code>GCAMUSAJobs</code> provides annual average job estimates during the 5-year window of a model timestep.</p>
+<p><code>GCAMUSAJobs</code>, by default, works with GCAM-USA v7.1, and is compatible with GCAM v6 or later versions conditional on updated <a href="https://jgcri.github.io/GCAMUSAJobs/">GCAM-USA assumption input</a> (e.g., plant retirement assumptions), as this package uses three main inputs: GCAM-USA model outputs, GCAM-USA input data and assumptions, and employment factors from the JEDI model. More details can be found <a href="https://jgcri.github.io/GCAMUSAJobs/">here</a>.</p>
 <p><a href="#Contents">Back to Contents</a></p>
 <p><br></p>
+<!-------------------------->
+<!-------------------------->
+</div>
+<div class="section level1">
+<h1 id="references">
+<a name="References"></a>References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h1>
+<!-------------------------->
+<!-------------------------->
+<ol style="list-style-type: decimal">
+<li>Rutovitz, J., Dominish, E. &amp; Downes, J. Calculating global energy sector jobs: 2015 methodology. (2015).</li>
+<li>Mayfield, E., Jenkins, J., Larson, E. &amp; Greig, C. Labor pathways to achieve net-zero emissions in the United States by mid-century. <em>Energy Policy</em> 177, 113516 (2023).</li>
+<li>Xie, J. J., Martin, M., Rogelj, J. &amp; Staffell, I. Distributional labour challenges and opportunities for decarbonizing the US power system. <em>Nat. Clim. Change</em> 13, 1203–1212 (2023).</li>
+<li>Jacobson, M. Z. et al. 100% Clean and Renewable Wind, Water, and Sunlight All-Sector Energy Roadmaps for 139 Countries of the World. <em>Joule</em> 1, 108–121 (2017).</li>
+</ol>
+<p><br><br><br></p>
 </div>
 
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="license">
+  </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>`use_mit_license()`, `use_gpl3_license()` or friends to pick a license</li>
@@ -208,29 +275,27 @@ sudo apt-get install libxml2-dev</code></pre>
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Di Sheng <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/YOUR-ORCID-ID" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Di Sheng <br><small class="roles"> Author, maintainer </small>   </li>
+<li>Ying Zhang <br><small class="roles"> Maintainer </small> <a href="https://orcid.org/0000-0002-0036-7502" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
 
 
-  </div>
+  </aside>
 </div>
 
 
-      <footer><div class="copyright">
-  <p></p>
-<p>Developed by Di Sheng.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p>Developed by Di Sheng, Ying Zhang.</p>
 </div>
 
-<div class="pkgdown">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+<div class="pkgdown-footer-right">
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
-
 
 
 

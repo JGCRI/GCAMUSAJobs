@@ -1,1 +1,15 @@
-destination: docs
+url: https://jgcri.github.io/GCAMUSAJobs
+
+title: "GCAMUSAJobs"
+description: "An R package for employment projections based on GCAM-USA power sector outcomes"
+
+template:
+  bootstrap: 5
+
+navbar:
+  structure:
+    left:
+      - home
+      - reference
+      - articles
+      - news
