@@ -76,7 +76,7 @@ power sector jobs. `GCAMUSAJobs` extends GCAM-USA functionality by
 (1) estimating the power plant capacity levels of different activities – operational capacity, capacity addition, and retirement; and 
 (2) calculating jobs associated with those activities, including jobs in operation and maintenance (O&M), construction, and decommissioning. 
 
-![Workflow of GCAMUSAJobs](images/workflow.png)
+![Workflow of GCAMUSAJobs](images/workflow.jpg)
 
 `GCAMUSAJobs` utilizes GCAM-USA annual electricity generation outputs to estimate underlying capacity levels based on assumptions about capacity factors 
 and calculate associated power sector jobs based on employment factors. The employment factor represents the average number of jobs created per unit of 
