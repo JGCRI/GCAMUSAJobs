@@ -132,6 +132,7 @@ proceeds through a series of functions, each building on the output of the previ
 | GCAM_EJ()  | Takes GCAM-USA output as input and calculates average annual electricity generation (in exajoules or EJ), broken down by state, fuel type, technology, and activity.                                                                                                             |
 | GCAM_GW()  | Converts the output of GCAM_EJ() into average annual capacity levels (in gigawatts or GW) by state, fuel, technology, and activity (e.g., operation, addition, retirement). Supports both the “Total” and “Net” methods for dealing with simultaneous additions and retirements. |
 | GCAM_JOB() | Uses GCAM_GW() results to compute average annual direct job estimates, disaggregated by state, fuel type, and job type (e.g., construction, O&M, decommissioning). Users can select between the “Total” or “Net” methods (default is “Total”).                                   |
+
 *Details on Methods can be found [here](https://jgcri.github.io/GCAMUSAJobs/).*
 
 <br />
@@ -145,6 +146,7 @@ Here are the key visualization functions:
 | PLOT_JOB()      | Plots average annual direct power sector jobs by fuel and job type over years. Uses GCAM_JOB() output.                                                                                                                                                 |
 | PLOT_JOB_TYPE() | Plots direct jobs by job type (e.g., construction, O&M) aggregated across all fuels for a selected year.                                                                                                                                               |
 | MAP_JOB()       | Plots a map of state-level total power sector direct jobs for a selected year.                                                                                                                                                                         |
+
 *Note that all of these PLOT_ functions will produce results either for an individual state or for the U.S. as a whole.*
 
 [Back to Contents](#Contents)
