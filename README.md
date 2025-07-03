@@ -55,7 +55,9 @@ An R package for employment projections based on GCAM-USA power sector outcomes.
 <!-------------------------->
 <!-------------------------->
 
-Kennedy, K.M., S. Vo, K. Vangelov, B. Buddi, S. Smith, J. Lou, R. Cui, and N. Hultman (2024). “The Renewable Energy Transition in Maryland: Implications for Energy Generating Facilities and Small Businesses.” Center for Global Sustainability, University of Maryland. 50 pp.
+Kennedy, K.M., S. Vo, K. Vangelov, B. Buddi, S. Smith, J. Lou, R. Cui, and N. Hultman (2024). 
+“The Renewable Energy Transition in Maryland: Implications for Energy Generating Facilities and Small Businesses.” 
+Center for Global Sustainability, University of Maryland. 50 pp.
 
 [Back to Contents](#Contents)
 
@@ -67,7 +69,23 @@ Kennedy, K.M., S. Vo, K. Vangelov, B. Buddi, S. Smith, J. Lou, R. Cui, and N. Hu
 <!-------------------------->
 <!-------------------------->
 
-`GCAMUSAJobs` was developed to post-process electric power projections from GCAM-USA, enabling the estimation of future power sector jobs at the state-level by generation technology and job type. GCAMUSAJobs extends GCAM-USA functionality by (1) estimating the capacity levels of different activities – operational capacity, capacity addition, and retirement; and (2) calculating jobs associated with production activities, including those in operation and maintenance (O&M), construction, and decommissioning.
+`GCAMUSAJobs` (https://jgcri.github.io/GCAMUSAJobs/) aims to provide employment projections for the power sector based on GCAM-USA output. 
+Specifically, this package was developed to post-process electric power projections from [GCAM-USA}(https://jgcri.github.io/gcam-doc/gcam-usa.html), 
+enabling the estimation of future power sector jobs at the state-level by generation technology and job type. Currently, GCAM-USA does not calculate 
+power sector jobs. `GCAMUSAJobs` extends GCAM-USA functionality by 
+(1) estimating the power plant capacity levels of different activities – operational capacity, capacity addition, and retirement; and 
+(2) calculating jobs associated with those activities, including jobs in operation and maintenance (O&M), construction, and decommissioning. 
+
+![Workflow of GCAMUSAJobs](images/workflow.png)
+
+`GCAMUSAJobs` utilizes GCAM-USA annual electricity generation outputs to estimate underlying capacity levels based on assumptions about capacity factors 
+and calculate associated power sector jobs based on employment factors. The employment factor represents the average number of jobs created per unit of 
+power plant activity (e.g., jobs per gigawatt). This method is widely used in the relevant literature^1,2^. `GCAMUSAJobs` adopts employment factors from 
+NREL’s Jobs & Economic Development Impacts (JEDI  ) model, which has been broadly used in the literature1,3,4. The tool focuses on estimating direct jobs 
+in the power sector, meaning employment directly involved in the construction, operation, or decommissioning of power plants, as opposed to indirect or 
+induced jobs in the broader economy.
+
+This functionality supports the need for assessing the distributional labor impacts of energy system transition. 
 
 [Back to Contents](#Contents)
 
