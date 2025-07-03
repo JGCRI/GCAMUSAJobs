@@ -8,12 +8,30 @@
 <!-------------------------->
 <!-------------------------->
 
-- [Key Links](#KeyLinks)
-- [Introduction](#Introduction)
 - [Citation](#Citation)
+- [Key Links](#KeyLinks)
+- [Related Publications](#RelatedPublications)
+- [Overview](#Overview)
 - [Installation Guide](#InstallGuides)
 - [How-to Guides](#How-toGuides)
 - [User Notice](#UserNotice)
+- [References](#References)
+
+<br />
+
+<!-------------------------->
+<!-------------------------->
+# <a name="Citation"></a>Citation
+<!-------------------------->
+<!-------------------------->
+
+Di Sheng, Brian O'Neill, Stephanie Waldhoff, and Matthew Binsted. 2025. GCAMUSAJob: 
+An R package for employment projections based on GCAM-USA power sector outcomes. 
+(In progress) Journal of Open Source Software, DOI: XXXX
+
+[Back to Contents](#Contents)
+
+<br />
 
 <br />
 
@@ -23,8 +41,21 @@
 <!-------------------------->
 <!-------------------------->
 
-- Github: https://github.com/JGCRI/GCAMUSAJobs/tree/paper
-- Webpage: https://jgcri.github.io/GCAMUSAJobs/
+- Webpage hosting additional details: https://jgcri.github.io/GCAMUSAJobs/
+
+[Back to Contents](#Contents)
+
+<br />
+
+<br />
+
+<!-------------------------->
+<!-------------------------->
+# <a name="RelatedPublications"></a>Related Publications
+<!-------------------------->
+<!-------------------------->
+
+Kennedy, K.M., S. Vo, K. Vangelov, B. Buddi, S. Smith, J. Lou, R. Cui, and N. Hultman (2024). “The Renewable Energy Transition in Maryland: Implications for Energy Generating Facilities and Small Businesses.” Center for Global Sustainability, University of Maryland. 50 pp.
 
 [Back to Contents](#Contents)
 
@@ -32,7 +63,7 @@
 
 <!-------------------------->
 <!-------------------------->
-# <a name="Introduction"></a>Introduction
+# <a name="Overview"></a>Overview
 <!-------------------------->
 <!-------------------------->
 
