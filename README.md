@@ -70,7 +70,7 @@ Center for Global Sustainability, University of Maryland. 50 pp.
 <!-------------------------->
 
 `GCAMUSAJobs` (https://jgcri.github.io/GCAMUSAJobs/) aims to provide employment projections for the power sector based on GCAM-USA output. 
-Specifically, this package was developed to post-process electric power projections from [GCAM-USA}(https://jgcri.github.io/gcam-doc/gcam-usa.html), 
+Specifically, this package was developed to post-process electric power projections from [GCAM-USA](https://jgcri.github.io/gcam-doc/gcam-usa.html), 
 enabling the estimation of future power sector jobs at the state-level by generation technology and job type. Currently, GCAM-USA does not calculate 
 power sector jobs. `GCAMUSAJobs` extends GCAM-USA functionality by 
 (1) estimating the power plant capacity levels of different activities – operational capacity, capacity addition, and retirement; and 
@@ -80,10 +80,10 @@ power sector jobs. `GCAMUSAJobs` extends GCAM-USA functionality by
 
 `GCAMUSAJobs` utilizes GCAM-USA annual electricity generation outputs to estimate underlying capacity levels based on assumptions about capacity factors 
 and calculate associated power sector jobs based on employment factors. The employment factor represents the average number of jobs created per unit of 
-power plant activity (e.g., jobs per gigawatt). This method is widely used in the relevant literature^1,2^. `GCAMUSAJobs` adopts employment factors from 
-NREL’s Jobs & Economic Development Impacts (JEDI  ) model, which has been broadly used in the literature1,3,4. The tool focuses on estimating direct jobs 
-in the power sector, meaning employment directly involved in the construction, operation, or decommissioning of power plants, as opposed to indirect or 
-induced jobs in the broader economy.
+power plant activity (e.g., jobs per gigawatt). This method is widely used in the relevant literature<sup>1,2</sup>. `GCAMUSAJobs` adopts employment factors from 
+NREL’s Jobs & Economic Development Impacts [(JEDI)](https://www.nrel.gov/analysis/jedi/models.html) model, which has been broadly used in the literature<sup>1,3,4</sup>. 
+The tool focuses on estimating direct jobs in the power sector, meaning employment directly involved in the construction, operation, or decommissioning 
+of power plants, as opposed to indirect or induced jobs in the broader economy.
 
 This functionality supports the need for assessing the distributional labor impacts of energy system transition. 
 
