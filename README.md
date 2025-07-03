@@ -1,4 +1,4 @@
-# GCAMUSAJobs
+# GCAMUSAJobs: An R package for employment projections based on GCAM-USA power sector outcomes
 
 <br />
 
