@@ -78,6 +78,8 @@ power sector jobs. `GCAMUSAJobs` extends GCAM-USA functionality by
 
 ![Workflow of GCAMUSAJobs](images/workflow.jpg)
 
+*Workflow of GCAMUSAJobs*
+
 `GCAMUSAJobs` utilizes GCAM-USA annual electricity generation outputs to estimate underlying capacity levels based on assumptions about capacity factors 
 and calculate associated power sector jobs based on employment factors. The employment factor represents the average number of jobs created per unit of 
 power plant activity (e.g., jobs per gigawatt). This method is widely used in the relevant literature<sup>1,2</sup>. `GCAMUSAJobs` adopts employment factors from 
