@@ -1,0 +1,257 @@
+---
+title: "Methods"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{methods}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+The sections below outline the [inputs](#inputs), [capacity calculation](#capacity), and [jobs calculation](#jobs) of this package. 
+
+<br />
+
+<!-------------------------->
+<!-------------------------->
+## <a name="inputs"></a>Inputs
+<!-------------------------->
+<!-------------------------->
+
+This package uses three main inputs: GCAM-USA model outputs, GCAM-USA input data and assumptions, and employment factors from the JEDI model.
+
+GCAM-USA provides annual power output projections (in exajoules, EJ) by technology and vintage for each model period. The model is calibrated to a base year (2015) and projects output every five years through 2100. Since the JEDI employment factors are based on capacity, we need data on GCAM-USA electricity outcomes in capacity terms, including operational capacity, newly installed capacity, and retired capacity. However, GCAM-USA does not directly track capacity levels. Therefore, we derive capacity information from annual power generation outcomes and supplementary data such as capacity factors (i.e., the ratio of the electrical energy produced by a generating unit for the period of time considered to the electrical energy that could have been produced at continuous full capacity during the same period.)
+
+GCAM-USA input data and assumptions are used to provide (1) capacity factor by technology, (2) power plant retirement pattern, and (3) variable and fixed operation and maintenance (O&M) cost. Capacity factors and retirement assumptions help derive capacity levels for operational, newly installed, and retired capacity. The variable and fixed O&M costs are used to differentiate between the corresponding variable and fixed O&M employment factors from JEDI. Note that GCAM-USA does not include capacity factors for hydropower and geothermal power. Therefore, we use alternative data sources. For hydropower, we use monthly state-level capacity factors from^1^, with the annual state-level average used in this package. For geothermal power, due to limited data, we use a capacity factor of 0.76, based on estimates from the U.S. EIA^2^.
+
+Annual employment factors (EF) derived from JEDI are used and, in some cases, modified with supplementary data from^3^ to calculate the number of jobs based on power plant activities. Specifically, JEDI provides job outcomes for a specified type of project, from which we calculate the EF by dividing the number of jobs by the project’s capacity. A mapping between the GCAM-USA’s power generation capacity by fuel type and the JEDI’s specific model used to calculate the corresponding EF is shown in the table below. More details on the adjustments of the EF are described in [Jobs Calculation](#jobs).
+
+| Fuel type in GCAM-USA’s power sector          | Corresponding JEDI model                                               |
+|-----------------------------------------------|------------------------------------------------------------------------|
+| Biomass                                       | Biopower                                                               |
+| Biomass with Carbon Capture and Storage (CCS) | Biopower with modifications following Tables S15, S16, and S17 from^3^ |
+| Coal                                          | Coal                                                                   |
+| Coal with CCS                                 | Coal with modifications following Tables S12, S13, and S14 from^3^     |
+| Natural gas                                   | Natural gas                                                            |
+| Natural gas with CCS                          | Natural gas with modifications following Tables S9 and S10 from^3^     |
+| Refined liquids                               | Coal with a heat rate of 10,767 Btu/kWh following 3                    |
+| Refined liquids with CCS                      | Coal with modifications following Tables S12, S13, and S14 from^3^     |
+| Solar CSP                                     | CSP                                                                    |
+| Solar PV                                      | Utility PV                                                             |
+| Rooftop PV in residential sector              | Residential PV                                                         |
+| Rooftop PV in commercial sector               | Commercial PV                                                          |
+| Onshore wind                                  | Land-based wind                                                        |
+| Offshore wind                                 | Offshore wind                                                          |
+| Nuclear                                       | Coal with modifications following Tables S3, S4, and S5 from^3^        |
+| Hydropower                                    | Conventional hydro                                                     |
+| Geothermal                                    | Conventional hydro                                                     |
+
+<br />
+
+<!-------------------------->
+<!-------------------------->
+## <a name="capacity"></a>Capacity Calculation
+<!-------------------------->
+<!-------------------------->
+In GCAM-USA, electricity generation results are reported by fuel (i), technology (k), year (t), and vintage (v), where "vintage" refers to the year a power plant or unit was built. Based on these results, the analysis further distinguishes electricity generation by activity (a), such as generation from existing operational or newly added power plants, and also estimates retired capacity. Key concepts and formulas include:
+
+1) Power from operational capacity
+
+This is the electricity generated in year t by all units still in operation that were built in vintage v:
+
+$$
+EJ_{i,k,t}^{v,op}=EJ_{i,k,t}^v
+$$
+
+$EJ_{i,k,t}^v$ is the observed generation for vintage v from GCAM-USA results.
+
+2) Potential generation from non-retired installed capacity
+
+This is the maximum electricity that could be generated in year t by all installed units that were built in vintage v, assuming they are running at their typical capacity. It differs from the actual electricity generated from operational capacity, as some units may be temporarily shut down due to market conditions, which would reduce power from operational capacity but would not affect the potential generation from installed capacity.  
+
+To estimate this value from GCAM-USA output, we assume the potential generation for each vintage v at period t to be the maximum generation observed in any year from t onward:
+
+$$
+EJ_{i,k,t}^{v,in}=\max_{\substack{T\geq t}} \left(EJ_{i,k,T}^{v,op}\right)
+$$
+
+This approach assumes that if a temporary shutdown of some units is reducing power generation in period t, that shutdown will end in some future period, at which time generation will increase to its maximum potential. The units being temporary shutdown in period t are still considered to be part of the non-retired installed capacity in period t, which is related to the fixed OM employment factors.
+
+3) Power from newly installed capacity
+
+The electricity generated by capacity added in year t (i.e., generation in year t from new builds in the same year t):
+
+$$
+EJ_{i,k,t}^{v,add}=EJ_{i,k,t}^{v=t}
+$$
+
+4) Power Loss from Retired Capacity
+
+The change in installed generation potential between years t-1 and t, representing retirements:
+
+$$
+EJ_{i,k,t}^{v,ret}=EJ_{i,k,t}^{v,in}-EJ_{i,k,t-1}^{v,in}
+$$
+
+Note that unlike other technologies, wind and solar generation in GCAM-USA v7.1 require careful handling due to their intermittent nature (e.g., wind depends on weather; solar depends on daylight). To ensure stable electricity supply, GCAM-USA includes backup power, which is not generated by wind/solar themselves and therefore is excluded from capacity and job calculations for wind/solar. Rooftop PV in GCAM-USA is not currently vintaged; thus, it requires post-processing to establish the vintage structure based on observed power output and retirement assumptions. An example for doing this is available [here](https://github.com/JGCRI/GCAMUSAJobs/blob/main/docs/tutorials/vintage.xlsx).
+
+GCAM-USA does not directly track power plant capacity (in GW). Instead, it provides electricity generation outputs (in EJ), from which we can derive capacity levels by using capacity factors (CF), which reflect how much of the theoretical maximum capacity is actually utilized over time. Correspondingly, there are four types of capacity from generation data: 
+
+1) Operational capacity (capacity associated with actual generation) 
+
+$$
+GW_{i,k,t}^{v,op}=\frac{EJ_{i,k,t}^{v,op}}{CF_{i,k,t}}
+$$
+
+2) Installed capacity (theoretical maximum generation capacity that is available, regardless of whether it’s fully utilized)
+
+$$
+GW_{i,k,t}^{v,in}=\frac{EJ_{i,k,t}^{v,in}}{CF_{i,k,t}}
+$$
+
+3) Newly installed capacity in year t 
+
+$$
+GW_{i,k,t}^{v,add}=\frac{EJ_{i,k,t}^{v,add}}{CF_{i,k,t}}
+$$
+
+4) Retired capacity between periods
+
+$$
+GW_{i,k,t}^{v,ret}=\frac{EJ_{i,k,t}^{v,ret}}{CF_{i,k,t}}
+$$
+
+Note that operational capacity may be lower than installed capacity because plants can shut down temporarily for economic reasons. These are not considered retirements, just underutilization. Fixed O&M jobs (e.g., regular maintenance) are assumed to be linked to installed capacity, whether or not it's operating. Variable O&M jobs (e.g., fuel handling, operations) are associated with operational capacity only.
+
+Regarding capacity retirement, there are two types in GCAM-USA: natural retirement ($GW_{i,k,t}^{v,\ nat\_ret}$) and premature retirement ($GW_{i,k,t}^{v,\ pre\_ret}$). Capacity installed in or before 2015 is grouped into a single 2015 vintage, retired naturally over time using an S-curve. Capacity added after 2015 retires at the end of its lifetime. Premature retirement occurs when a power plant shuts down before the end of its lifetime due to economic non-viability (i.e., no longer profitable). If total retirement exceeds natural retirement, the excess is treated as premature retirement.
+
+GCAM-USA allows new capacity to be added while older capacity is being retired in the same year. This reflects the reality in larger states (e.g., California, Texas) with many facilities, but can be problematic in small states with few facilities. Therefore, we design two user-defined method options to handle this:
+
+1) Total Method (suited for large states), where all capacity additions and retirements are counted separately:$GW_{i,k,t}^{v,ret}$ and $GW_{i,k,t}^{add}$.Thus, job calculations will depend on the total capacity of the two. 
+
+2) Net Method (suited for small states), where premature retirement is offset with capacity addition:
+
+Net retirement:
+
+$$
+GW_{i,k,t}^{v,ret\ast}=GW_{i,k,t}^{v,nat\_ret}+\max{\left(0,GW_{i,k,t}^{v,pre\_ret}-GW_{i,k,t}^{add}\right)}
+$$
+
+Net addition:
+
+$$
+GW_{i,k,t}^{v,add\ast}=\max{\left(0,GW_{i,k,t}^{add}-GW_{i,k,t}^{v,pre\_ret}\right)}
+$$
+
+This distinction ensures that job estimates for capacity expansion and decommissioning remain realistic and regionally appropriate.
+
+<br />
+
+<!-------------------------->
+<!-------------------------->
+## <a name="jobs"></a>Jobs Calculation
+<!-------------------------->
+<!-------------------------->
+
+Job calculations are then performed based on the capacities described above. We focus on the four direct jobs categories in the power generation sector: 
+
+1) Construction jobs, including onsite construction jobs and construction-related jobs (e.g., design and project management)
+
+2) Fixed Operation & Maintenance (O&M) jobs 
+
+3) Variable O&M jobs 
+
+4) Decommissioning jobs when capacity is being retired
+
+Each category is tied to a specific type of capacity activity:
+
+| Job Type     | Linked to                | Employment Factor (EF) Applied |
+|--------------|--------------------------|--------------------------------|
+| Construction | Newly installed capacity | Construction EF                |
+| Fixed O&M    | Installed capacity       | Fixed O&M EF                   |
+| Variable O&M | Operational capacity     | Variable O&M EF                |
+| Decommission | Retired capacity         | Decommission EF                |
+
+JEDI provides a single O&M employment factor $EF_{OM}^{JEDI}$, which includes both fixed and variable jobs, and is based on capacity (MW). However, two important adjustments are needed for GCAM-USA: 1) separate variable and fixed O&M Jobs, as GCAM-USA allows temporary plant shutdowns for economic reasons, and 2) adjust for load segments, as GCAM-USA models different load segments (base, peak, etc.), which have different capacity factors.
+
+During temporary plant shutdowns, fixed O&M jobs continue, while variable O&M jobs would reduce. To disaggregate the JEDI EF, we assume labor shares follow fixed versus variable O&M cost shares from GCAM assumptions:
+
+$$
+EF_{OM,base}^{var} = \left( \frac{\$_{OM}^{var}}{\$_{OM}^{var} + \$_{OM}^{fix}} \right) EF_{OM}^{JEDI}
+$$
+
+
+$$
+EF_{OM,base}^{fix} = \left( \frac{\$_{OM}^{fix}}{\$_{OM}^{var} + \$_{OM}^{fix}} \right) EF_{OM}^{JEDI}
+$$
+
+Because non-base-load plants operate fewer hours per year, their variable O&M jobs should be lower. We scale down their variable O&M EF using the ratio of their CF to the base-load CF:
+
+$$
+EF_{OM,nonbase}^{var}=\left(\frac{CF_{nonbase}}{CF_{base}}\right)EF_{OM,base}^{var}
+$$
+
+However, note that their fixed O&M EF should not be affected by operation hours because it is based on the installed capacity:
+
+$$
+EF_{OM,nonbase}^{fix}=EF_{OM,base}^{fix}
+$$
+
+JEDI reports construction jobs as total full-time equivalents for the entire construction period. For example, 40 full-time equivalents to build a 2-year project mean 20 full-time jobs per year for 2 years. To use these data from JEDI in annual GCAM-USA outputs, we calculate annualized construction job EFs:
+
+$$
+\mathrm{Annual\ EF}=\frac{N}{T\cdot C}
+$$
+
+where N is total construction full-time equivalents; T is construction period (years); C is project capacity (MW).
+
+However, GCAM-USA runs in 5-year time-steps, so timing adjustments are needed. 
+
+If T ≤ 5 (construction fits within one GCAM period):
+
+$$
+\mathrm{Annual\ EF}=\frac{N}{5C}
+$$
+
+That is, jobs are assigned evenly over the 5-year GCAM period.
+
+If T > 5 (construction spans multiple GCAM periods): Here we show an example of projects spanning two GCAM periods. In this case, from t - 4 to t (last 5 years of construction):
+
+$$
+{\mathrm{EF}}_t=\frac{N}{TC}
+$$
+
+From t - 9 to t - 5 (earlier years):
+
+$$
+{\mathrm{EF}}_{t-5}=\frac{N}{TC}\left(\frac{T-5}{5}\right)
+$$
+
+This splits the total construction jobs into appropriate GCAM-USA time windows at an average annual basis.
+
+To provide a specific example, in the case of nuclear capacity construction, due to the absence of specific construction period data from JEDI, we assume an 8-year construction period based on NREL ATB data8. Assume GCAM-USA shows 10 MW of nuclear capacity added in 2050. As T = 8 years, the construction period spans over two GCAM-USA periods (10 years in two 5-year time-steps). The annual construction EF (jobs/MW/year) from 2046–2050 (last 5 years) is:
+
+$$
+{\mathrm{EF}}_{2050}=\frac{N}{TC}
+$$
+
+From 2041–2045 (only the last 3 years out of the 5-year time period has construction going on), the average annual construction EF over the 5-year time window is:
+
+$$
+{\mathrm{EF}}_{2045}=\frac{N}{TC}\left(\frac{8-5}{5}\right)
+$$
+
+As a result, the number of construction jobs due to the 10MW addition would be 10 times {EF}_{2050} in 2050 and 10 times ${\mathrm{EF}}_{2045}$ in 2045.
+
+<br />
+_________
+
+1.	Hall, D., Hunt, R., Reeves, K. & Carroll, G. Estimation of Economic Parameters of U.S. Hydropower Resources. None, 1218138, 3750 https://www.osti.gov/servlets/purl/1218138/ (2003) doi:10.2172/1218138.
+2.	EIA. Nearly half of U.S. geothermal power capacity came online in the 1980s - U.S. Energy Information Administration (EIA). https://www.eia.gov/todayinenergy/detail.php?id=42036 (2019).
+3.	Xie, J. J., Martin, M., Rogelj, J. & Staffell, I. Distributional labour challenges and opportunities for decarbonizing the US power system. *Nat. Clim. Change* 13, 1203–1212 (2023).
+
+
+
+<br />
+<br />
+<br />
+

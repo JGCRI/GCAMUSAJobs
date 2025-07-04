@@ -15,7 +15,6 @@
 - [Installation Guide](#InstallGuides)
 - [How-to Guides](#How-toGuides)
 - [User Notice](#UserNotice)
-- [References](#References)
 
 <br />
 
@@ -133,7 +132,7 @@ proceeds through a series of functions, each building on the output of the previ
 | GCAM_GW()  | Converts the output of GCAM_EJ() into average annual capacity levels (in gigawatts or GW) by state, fuel, technology, and activity (e.g., operation, addition, retirement). Supports both the “Total” and “Net” methods for dealing with simultaneous additions and retirements. |
 | GCAM_JOB() | Uses GCAM_GW() results to compute average annual direct job estimates, disaggregated by state, fuel type, and job type (e.g., construction, O&M, decommissioning). Users can select between the “Total” or “Net” methods (default is “Total”).                                   |
 
-*Details on Methods can be found [here](https://jgcri.github.io/GCAMUSAJobs/).*
+*Details on Methods can be found [here](https://jgcri.github.io/GCAMUSAJobs/articles/methods.html).*
 
 <br />
 
@@ -159,19 +158,14 @@ Here are the key visualization functions:
 <!-------------------------->
 <!-------------------------->
 
-`GCAMUSAJobs`, by default, works with GCAM-USA v7.1, and is compatible with GCAM v6 or later versions conditional on updated [GCAM-USA assumption input](https://jgcri.github.io/GCAMUSAJobs/) 
+`GCAMUSAJobs`, by default, works with GCAM-USA v7.1, and is compatible with GCAM v6 or later versions conditional on updated [GCAM-USA assumption input](https://jgcri.github.io/GCAMUSAJobs/articles/methods.html) 
 (e.g., plant retirement assumptions), as this package uses three main inputs: GCAM-USA model outputs, GCAM-USA input data and assumptions, and 
-employment factors from the JEDI model. More details can be found [here](https://jgcri.github.io/GCAMUSAJobs/).
+employment factors from the JEDI model. More details can be found [here](https://jgcri.github.io/GCAMUSAJobs/articles/user_notice.html).
 
 [Back to Contents](#Contents)
 
 <br />
-
-<!-------------------------->
-<!-------------------------->
-# <a name="References"></a>References
-<!-------------------------->
-<!-------------------------->
+_________
 
 1.	Rutovitz, J., Dominish, E. & Downes, J. Calculating global energy sector jobs: 2015 methodology. (2015).
 2.	Mayfield, E., Jenkins, J., Larson, E. & Greig, C. Labor pathways to achieve net-zero emissions in the United States by mid-century. *Energy Policy* 177, 113516 (2023).

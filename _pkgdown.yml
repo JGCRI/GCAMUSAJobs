@@ -11,5 +11,25 @@ navbar:
     left:
       - home
       - reference
+      - methods
       - articles
-      - news
+  components:
+    home:
+      text: Home
+      href: index.html
+
+    methods:
+      text: Methods
+      href: articles/methods.html
+
+    articles:
+      text: Articles
+      menu:
+        - text: package_vignette
+          href: articles/package_vignette.html
+        - text: user_notice
+          href: articles/user_notice.html
+        - text: case study
+          href: articles/casestudy.html
+        - text: limitations
+          href: articles/limitations.html

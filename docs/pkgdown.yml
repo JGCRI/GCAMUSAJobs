@@ -2,8 +2,12 @@ pandoc: '3.4'
 pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
+  casestudy: casestudy.html
+  limitations: limitations.html
+  methods: methods.html
   package_vignette: package_vignette.html
-last_built: 2025-07-03T20:16Z
+  user_notice: user_notice.html
+last_built: 2025-07-04T01:18Z
 urls:
   reference: https://jgcri.github.io/GCAMUSAJobs/reference
   article: https://jgcri.github.io/GCAMUSAJobs/articles

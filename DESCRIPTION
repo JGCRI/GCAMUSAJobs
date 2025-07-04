@@ -1,15 +1,14 @@
 Package: GCAMUSAJobs
 Title: Tool for project jobs based on GCAM-USA results
 Version: 0.0.1
-Authors@R:c( 
+Authors@R: c( 
     person("Di", "Sheng", , "di.sheng@pnnl.gov", role = c("aut", "cre")),
     person("Ying", "Zhang", , "ying.zhang@pnnl.gov", role = "cre",
            comment = c(ORCID = "0000-0002-0036-7502"))
            )
 Description: This packge projects state-level power sector employment by fuel type and occupation, based on GCAM-USA power sector output.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
-URL:https://jgcri.github.io/GCAMUSAJobs
+License: BSD 2-Clause License + file LICENSE
+URL: https://jgcri.github.io/GCAMUSAJobs
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2

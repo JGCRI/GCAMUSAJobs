@@ -1,0 +1,14 @@
+---
+title: "Limitations"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{limitations}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This package currently has several limitations, which point to opportunities for future development. First, it focuses exclusively on *direct employment* in power generation, such as construction, operation and maintenance (O&M), and decommissioning, while indirect employment is not accounted for. Indirect jobs, such as those in upstream supply chains (e.g., biomass feedstock production, fossil fuel extraction, or equipment manufacturing), are an important part of the energy employment landscape. Future development of the package could broaden the scope by incorporating these indirect job categories to offer a more comprehensive estimate of employment impacts.
+
+Second, the package assumes *constant employment factors* over time. That is, the number of jobs per unit of capacity or electricity generated does not change across years. In reality, labor productivity tends to improve over time, especially with increased mechanization, automation, and learning-by-doing. To better reflect this dynamic, future development could allow users to specify time-varying employment factors, informed by external assumptions or empirical data on technological change and productivity improvements.
+
+Third, the current version of the package relies *entirely on employment factors from the JEDI model*. While JEDI is widely used, it may not always reflect the latest data or be appropriate for all contexts. A potential improvement would be to incorporate alternative sources of employment factors, such as peer-reviewed studies, national labor statistics, or regional reports. This enhancement would provide users with greater flexibility and enable more tailored, context-specific job estimates.
