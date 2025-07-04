@@ -38,7 +38,7 @@ An R package for employment projections based on GCAM-USA power sector outcomes.
 <!-------------------------->
 <!-------------------------->
 
-GitHub Repo: https://jgcri.github.io/GCAMUSAJobs/
+GitHub Repo: https://github.com/JGCRI/GCAMUSAJobs
 
 Website: https://jgcri.github.io/GCAMUSAJobs/
 
