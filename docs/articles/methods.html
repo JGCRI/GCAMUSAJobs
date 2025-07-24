@@ -106,7 +106,7 @@ power. Therefore, we use alternative data sources. For hydropower, we
 use monthly state-level capacity factors from<sup>1</sup>, with the
 annual state-level average used in this package. For geothermal power,
 due to limited data, we use a capacity factor of 0.76, based on
-estimates from the U.S. EIA<sup>2</sup>.</p>
+estimates from<sup>2</sup>.</p>
 <p>Annual employment factors (EF) derived from JEDI are used and, in
 some cases, modified with supplementary data from<sup>3</sup> to
 calculate the number of jobs based on power plant activities.
@@ -334,16 +334,24 @@ retirement exceeds natural retirement, the excess is treated as
 premature retirement.</p>
 <p>GCAM-USA allows new capacity to be added while older capacity is
 being retired in the same year. This reflects the reality in larger
-states (e.g., California, Texas) with many facilities, but can be
-problematic in small states with few facilities. Therefore, we design
-two user-defined method options to handle this:</p>
+states (e.g., California, Texas) with many facilities, where it is
+plausible that while one plant is retiring, a facility at a different
+location in the state is beginning construction. However, in small
+states with few facilities, simultaneous retirement and addition may not
+reflect reality. For example, if only one coal plant exists in a small
+state and it retires, any new capacity is likely a direct replacement,
+not a separate project. In this case, the replacement would imply a
+lower number of jobs needed than if the retirement and addition occurred
+as separate projects. Therefore, we design two user-defined method
+options to handle this:</p>
 <ol style="list-style-type: decimal">
 <li><p>Total Method (suited for large states), where all capacity
-additions and retirements are counted
-separately:<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><msubsup><mi>W</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mrow><mi>v</mi><mo>,</mo><mi>r</mi><mi>e</mi><mi>t</mi></mrow></msubsup></mrow><annotation encoding="application/x-tex">GW_{i,k,t}^{v,ret}</annotation></semantics></math>
+additions and retirements are counted separately:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><msubsup><mi>W</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mrow><mi>v</mi><mo>,</mo><mi>r</mi><mi>e</mi><mi>t</mi></mrow></msubsup></mrow><annotation encoding="application/x-tex">GW_{i,k,t}^{v,ret}</annotation></semantics></math>
 and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><msubsup><mi>W</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mrow><mi>a</mi><mi>d</mi><mi>d</mi></mrow></msubsup></mrow><annotation encoding="application/x-tex">GW_{i,k,t}^{add}</annotation></semantics></math>.Thus,
-job calculations will depend on the total capacity of the two.</p></li>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><msubsup><mi>W</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mrow><mi>a</mi><mi>d</mi><mi>d</mi></mrow></msubsup></mrow><annotation encoding="application/x-tex">GW_{i,k,t}^{add}</annotation></semantics></math>.
+Thus, job calculations will depend on the total capacity of the
+two.</p></li>
 <li><p>Net Method (suited for small states), where premature retirement
 is offset with capacity addition:</p></li>
 </ol>
@@ -357,6 +365,20 @@ GW_{i,k,t}^{v,add\ast}=\max{\left(0,GW_{i,k,t}^{add}-GW_{i,k,t}^{v,pre\_ret}\rig
 </annotation></semantics></math></p>
 <p>This distinction ensures that job estimates for capacity expansion
 and decommissioning remain realistic and regionally appropriate.</p>
+<p>When choosing a method for state-level analysis, users are
+recommended to look into criteria, such as the number of facilities and
+existing capacity by fuel type, to define whether the state should be
+considered “large” or “small”. For example, states with more than 10 GW
+of existing natural gas power capacity or more than 10 natural gas
+facilities could reasonably be considered “large.” However, if an
+upcoming capacity change is known to be either a direct replacement or a
+separate project, users should select the corresponding method
+regardless of whether the state is “large” or “small”. The package uses
+the “total” method by default, though users can choose “net” as an
+alternative. To apply different methods across states, users can run
+both methods independently, select the preferred results for each state,
+and then combine them through post-processing to produce national
+results with a mix of user selected method for each state.</p>
 <p><br></p>
 <!-------------------------->
 <!-------------------------->
@@ -442,10 +464,10 @@ operation hours because it is based on the installed capacity:</p>
 EF_{OM,nonbase}^{fix}=EF_{OM,base}^{fix}
 </annotation></semantics></math></p>
 <p>JEDI reports construction jobs as total full-time equivalents for the
-entire construction period. For example, 40 full-time equivalents to
-build a 2-year project mean 20 full-time jobs per year for 2 years. To
-use these data from JEDI in annual GCAM-USA outputs, we calculate
-annualized construction job EFs:</p>
+entire construction period<sup>4</sup>. For example, 40 full-time
+equivalents to build a 2-year project mean 20 full-time jobs per year
+for 2 years. To use these data from JEDI in annual GCAM-USA outputs, we
+calculate annualized construction job EFs:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">l</mi><mspace width="0.222em"></mspace><mi mathvariant="normal">E</mi><mi mathvariant="normal">F</mi></mrow><mo>=</mo><mfrac><mi>N</mi><mrow><mi>T</mi><mo>⋅</mo><mi>C</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
 \mathrm{Annual\ EF}=\frac{N}{T\cdot C}
 </annotation></semantics></math></p>
@@ -500,6 +522,8 @@ the 1980s - U.S. Energy Information Administration (EIA). <a href="https://www.e
 <li>Xie, J. J., Martin, M., Rogelj, J. &amp; Staffell, I. Distributional
 labour challenges and opportunities for decarbonizing the US power
 system. <em>Nat. Clim. Change</em> 13, 1203–1212 (2023).</li>
+<li>NREL. Interpreting JEDI Results. Jobs and Economic Development
+Impact Models <a href="https://www.nrel.gov/analysis/jedi/results" class="external-link uri">https://www.nrel.gov/analysis/jedi/results</a> (2025).</li>
 </ol>
 <p><br><br><br></p>
 </div>

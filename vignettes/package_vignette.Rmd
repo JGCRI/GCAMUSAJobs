@@ -50,7 +50,7 @@ prj <- ReadGCAM(filetype = 'prj',
 ```
 
 # Step2: calculate detailed power generation outcomes
-This step queries power generation from GCAM output, which provides generation for all capacity in operation, and calculates the implied power generation associated with installed capacity, newly added capacity, and retired capacity. The specific types of generation (“activities”) calculated are: Capacity in operation: **running**, **installed**; Capacity addition: **additions**, **add_adj**; Capacity retirements: **retirements**, **natural_retire**, **early_retire**, **early_ret_adj**, and **ret_adj**. The "_adj" activities indicate different methods of calculation (net vs. total, see Step 4). Please refer to documentation (https://github.com/JGCRI/GCAMUSAJobs/blob/paper/docs/tutorials/Documentation_GCAMUSAJobs.docx) for details.
+This step queries power generation from GCAM output, which provides generation for all capacity in operation, and calculates the implied power generation associated with installed capacity, newly added capacity, and retired capacity. The specific types of generation (“activities”) calculated are: Capacity in operation: **running**, **installed**; Capacity addition: **additions**, **add_adj**; Capacity retirements: **retirements**, **natural_retire**, **early_retire**, **early_ret_adj**, and **ret_adj**. The "_adj" activities indicate different methods of calculation (net vs. total, see Step 4). Please refer to [Methods](https://jgcri.github.io/GCAMUSAJobs/articles/methods.html) for details.
 
 The power generation output is annual, broken down by state, fuel type, and technology. This step takes about 20 seconds to execute and generate output for a given scenario.
 
@@ -115,7 +115,7 @@ JOB_activity3 %>%
 
 # Step5: plot employment factor
 
-This step plots the employment factor from the JEDI (https://www.nrel.gov/analysis/jedi/models.html) model. Please refer to the documentation (https://github.com/JGCRI/GCAMUSAJobs/blob/paper/docs/tutorials/Documentation_GCAMUSAJobs.docx) for details. Each point represents the employment factor of a state.
+This step plots the employment factor from the [JEDI](https://www.nrel.gov/analysis/jedi/models.html) model. Please refer to the [Methods](https://jgcri.github.io/GCAMUSAJobs/articles/methods.html) for details. Each point represents the employment factor of a state.
 
 Running the function with no argument plots employment factors of all states.
 

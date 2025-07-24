@@ -21,7 +21,7 @@ This package uses three main inputs: GCAM-USA model outputs, GCAM-USA input data
 
 GCAM-USA provides annual power output projections (in exajoules, EJ) by technology and vintage for each model period. The model is calibrated to a base year (2015) and projects output every five years through 2100. Since the JEDI employment factors are based on capacity, we need data on GCAM-USA electricity outcomes in capacity terms, including operational capacity, newly installed capacity, and retired capacity. However, GCAM-USA does not directly track capacity levels. Therefore, we derive capacity information from annual power generation outcomes and supplementary data such as capacity factors (i.e., the ratio of the electrical energy produced by a generating unit for the period of time considered to the electrical energy that could have been produced at continuous full capacity during the same period.)
 
-GCAM-USA input data and assumptions are used to provide (1) capacity factor by technology, (2) power plant retirement pattern, and (3) variable and fixed operation and maintenance (O&M) cost. Capacity factors and retirement assumptions help derive capacity levels for operational, newly installed, and retired capacity. The variable and fixed O&M costs are used to differentiate between the corresponding variable and fixed O&M employment factors from JEDI. Note that GCAM-USA does not include capacity factors for hydropower and geothermal power. Therefore, we use alternative data sources. For hydropower, we use monthly state-level capacity factors from^1^, with the annual state-level average used in this package. For geothermal power, due to limited data, we use a capacity factor of 0.76, based on estimates from the U.S. EIA^2^.
+GCAM-USA input data and assumptions are used to provide (1) capacity factor by technology, (2) power plant retirement pattern, and (3) variable and fixed operation and maintenance (O&M) cost. Capacity factors and retirement assumptions help derive capacity levels for operational, newly installed, and retired capacity. The variable and fixed O&M costs are used to differentiate between the corresponding variable and fixed O&M employment factors from JEDI. Note that GCAM-USA does not include capacity factors for hydropower and geothermal power. Therefore, we use alternative data sources. For hydropower, we use monthly state-level capacity factors from^1^, with the annual state-level average used in this package. For geothermal power, due to limited data, we use a capacity factor of 0.76, based on estimates from^2^.
 
 Annual employment factors (EF) derived from JEDI are used and, in some cases, modified with supplementary data from^3^ to calculate the number of jobs based on power plant activities. Specifically, JEDI provides job outcomes for a specified type of project, from which we calculate the EF by dividing the number of jobs by the project’s capacity. A mapping between the GCAM-USA’s power generation capacity by fuel type and the JEDI’s specific model used to calculate the corresponding EF is shown in the table below. More details on the adjustments of the EF are described in [Jobs Calculation](#jobs).
 
@@ -124,9 +124,9 @@ Note that operational capacity may be lower than installed capacity because plan
 
 Regarding capacity retirement, there are two types in GCAM-USA: natural retirement ($GW_{i,k,t}^{v,\ nat\_ret}$) and premature retirement ($GW_{i,k,t}^{v,\ pre\_ret}$). Capacity installed in or before 2015 is grouped into a single 2015 vintage, retired naturally over time using an S-curve. Capacity added after 2015 retires at the end of its lifetime. Premature retirement occurs when a power plant shuts down before the end of its lifetime due to economic non-viability (i.e., no longer profitable). If total retirement exceeds natural retirement, the excess is treated as premature retirement.
 
-GCAM-USA allows new capacity to be added while older capacity is being retired in the same year. This reflects the reality in larger states (e.g., California, Texas) with many facilities, but can be problematic in small states with few facilities. Therefore, we design two user-defined method options to handle this:
+GCAM-USA allows new capacity to be added while older capacity is being retired in the same year. This reflects the reality in larger states (e.g., California, Texas) with many facilities, where it is plausible that while one plant is retiring, a facility at a different location in the state is beginning construction. However, in small states with few facilities, simultaneous retirement and addition may not reflect reality. For example, if only one coal plant exists in a small state and it retires, any new capacity is likely a direct replacement, not a separate project. In this case, the replacement would imply a lower number of jobs needed than if the retirement and addition occurred as separate projects. Therefore, we design two user-defined method options to handle this:
 
-1) Total Method (suited for large states), where all capacity additions and retirements are counted separately:$GW_{i,k,t}^{v,ret}$ and $GW_{i,k,t}^{add}$.Thus, job calculations will depend on the total capacity of the two. 
+1) Total Method (suited for large states), where all capacity additions and retirements are counted separately: $GW_{i,k,t}^{v,ret}$ and $GW_{i,k,t}^{add}$. Thus, job calculations will depend on the total capacity of the two. 
 
 2) Net Method (suited for small states), where premature retirement is offset with capacity addition:
 
@@ -143,6 +143,8 @@ GW_{i,k,t}^{v,add\ast}=\max{\left(0,GW_{i,k,t}^{add}-GW_{i,k,t}^{v,pre\_ret}\rig
 $$
 
 This distinction ensures that job estimates for capacity expansion and decommissioning remain realistic and regionally appropriate.
+
+When choosing a method for state-level analysis, users are recommended to look into criteria, such as the number of facilities and existing capacity by fuel type, to define whether the state should be considered "large" or "small". For example, states with more than 10 GW of existing natural gas power capacity or more than 10 natural gas facilities could reasonably be considered "large." However, if an upcoming capacity change is known to be either a direct replacement or a separate project, users should select the corresponding method regardless of whether the state is "large" or "small". The package uses the "total" method by default, though users can choose "net" as an alternative. To apply different methods across states, users can run both methods independently, select the preferred results for each state, and then combine them through post-processing to produce national results with a mix of user selected method for each state. 
 
 <br />
 
@@ -196,7 +198,7 @@ $$
 EF_{OM,nonbase}^{fix}=EF_{OM,base}^{fix}
 $$
 
-JEDI reports construction jobs as total full-time equivalents for the entire construction period. For example, 40 full-time equivalents to build a 2-year project mean 20 full-time jobs per year for 2 years. To use these data from JEDI in annual GCAM-USA outputs, we calculate annualized construction job EFs:
+JEDI reports construction jobs as total full-time equivalents for the entire construction period^4^. For example, 40 full-time equivalents to build a 2-year project mean 20 full-time jobs per year for 2 years. To use these data from JEDI in annual GCAM-USA outputs, we calculate annualized construction job EFs:
 
 $$
 \mathrm{Annual\ EF}=\frac{N}{T\cdot C}
@@ -248,6 +250,7 @@ _________
 1.	Hall, D., Hunt, R., Reeves, K. & Carroll, G. Estimation of Economic Parameters of U.S. Hydropower Resources. None, 1218138, 3750 https://www.osti.gov/servlets/purl/1218138/ (2003) doi:10.2172/1218138.
 2.	EIA. Nearly half of U.S. geothermal power capacity came online in the 1980s - U.S. Energy Information Administration (EIA). https://www.eia.gov/todayinenergy/detail.php?id=42036 (2019).
 3.	Xie, J. J., Martin, M., Rogelj, J. & Staffell, I. Distributional labour challenges and opportunities for decarbonizing the US power system. *Nat. Clim. Change* 13, 1203–1212 (2023).
+4.	NREL. Interpreting JEDI Results. Jobs and Economic Development Impact Models https://www.nrel.gov/analysis/jedi/results (2025).
 
 
 
