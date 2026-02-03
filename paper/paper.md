@@ -63,8 +63,8 @@ The Global Change Analysis Model (GCAM) and its ancillary model GCAM-USA
 [@GCAM82] are powerful tools for studying energy systems dynamics and evolution.
 Many previous studies have applied or integrated the tool to analyze potential
 impacts on the energy system and associated outcomes due to environmental and
-socioeconomic changes (e.g., @feijoo2020us; @ganji2024implications;
-@ou2018estimating; @pan2025assessment; @zhang2025long). Currently, GCAM-USA does
+socioeconomic changes [e.g., @feijoo2020us; @ganji2024implications;
+@ou2018estimating; @pan2025assessment; @zhang2025long]. Currently, GCAM-USA does
 not calculate power sector jobs. `GCAMUSAJobs` addresses this gap by providing
 projected direct power sector jobs based on GCAM-USA output, enhancing the
 functionality of GCAM-USA for labor impact analysis.
@@ -83,7 +83,7 @@ collaboration with GCAM-USA modelers and domain experts in socioeconomics.
 
 `GCAMUSAJobs` is also designed to be easily adaptable to the output of broader
 energy system models to enable extended employment analysis. `GCAMUSAJobs`
-provides detailed employment factors extracted from simulations of Jobs &
+provides detailed employment factors extracted from simulations of the Jobs &
 Economic Development Impacts (JEDI) model [@nrel_jobs_nodate], which calculates
 employment factors under a range of assumptions about power sector technologies.
 This means users can supply capacity activity output from an energy system model
