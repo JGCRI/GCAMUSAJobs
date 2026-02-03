@@ -36,30 +36,87 @@ affiliations:
 # Summary
 
 The `GCAMUSAJobs` R package was developed to post-process electric power
-projections from GCAM-USA, enabling the estimation of future power sector jobs
+projections from GCAM-USA [@GCAM82], enabling the estimation of future power sector jobs
 at the state-level by generation technology and job type. `GCAMUSAJobs` extends
 GCAM-USA functionality by (1) estimating the capacity levels of different
 activities – operational capacity, capacity addition, and retirement; and (2)
 calculating jobs associated with production activities, including those in
 operation and maintenance (O&M), construction, and decommissioning.
+Additionally, this package is designed to be easily adaptable to the output of
+other energy system models besides GCAM-USA.
 
 # Statement of need
 
 The development of `GCAMUSAJobs` was driven by the need to assess the
-distributional labor impacts of energy system transition
-[@xie2023distributional; @mayfield2023labor; @hanson2023local;
-@raimi2021mapping]. While gross employment [@mayfield2023labor] and power sector
-employment [@xie2023distributional] are expected to grow into the future,  over
-time under both business as usual and decarbonization, @xie2023distributional
-find insignificant differences in power sector jobs between the two scenarios.
-Other research has also suggested that fossil fuel-intensive states may
-experience slower job growth or job losses [@hanson2023local;
+distributional labor impacts of energy system evolution [@xie2023distributional;
+@mayfield2023labor; @hanson2023local; @raimi2021mapping]. While gross employment
+[@mayfield2023labor] and power sector employment [@xie2023distributional] are
+expected to grow into the future, under both business as usual (BAU) and
+alternative scenarios, @xie2023distributional find insignificant differences in
+the U.S. national power sector jobs between BAU and decarbonization scenarios.
+However, distributional differences across U.S. states are much more
+significant, e.g., fossil fuel-intensive states may experience slower job growth
+or job losses, which was also found in other studies [@hanson2023local;
 @mayfield2023labor].
 
-Currently, GCAM-USA does not calculate power sector jobs. `GCAMUSAJobs`
-addresses this gap by providing projected direct power sector jobs based on
-GCAM-USA output, enhancing the functionality of GCAM-USA for labor impact
-analysis.
+The Global Change Analysis Model (GCAM) and its ancillary model GCAM-USA
+[@GCAM82] are powerful tools for studying energy systems dynamics and evolution.
+Many previous studies have applied or integrated the tool to analyze potential
+impacts on the energy system and associated outcomes due to environmental and
+socioeconomic changes (e.g., @feijoo2020us; @ganji2024implications;
+@ou2018estimating; @pan2025assessment; @zhang2025long). Currently, GCAM-USA does
+not calculate power sector jobs. `GCAMUSAJobs` addresses this gap by providing
+projected direct power sector jobs based on GCAM-USA output, enhancing the
+functionality of GCAM-USA for labor impact analysis.
+
+# Software design
+
+The direct purpose of `GCAMUSAJobs` is to calculate different types of jobs in
+the power sector across U.S. states, built upon the existing open-source model
+GCAM-USA. As GCAM-USA is a complex multi-sector model with technological
+details, our design involves in-depth understanding and testing of how various
+components work together in GCAM-USA, especially in the power sector, so that we
+can properly design the jobs calculation in our package and source available
+matching data (e.g., employment factors). This requires irreplaceable human
+efforts to comprehend the existing software and extend its capability through
+collaboration with GCAM-USA modelers and domain experts in socioeconomics.
+
+`GCAMUSAJobs` is also designed to be easily adaptable to the output of broader
+energy system models to enable extended employment analysis. `GCAMUSAJobs`
+provides detailed employment factors extracted from simulations of Jobs &
+Economic Development Impacts (JEDI) model [@nrel_jobs_nodate], which calculates
+employment factors under a range of assumptions about power sector technologies.
+This means users can supply capacity activity output from an energy system model
+in the required format and conduct employment analysis using those readily
+applicable employment factors. For GCAM-USA users, the workflow is further
+simplified by directly ingesting GCAM-USA output databases in their original
+format and automatically performing capacity activity and employment analysis.
+
+The package structure also allows users to access intermediate outputs and
+develop custom functions to examine or adapt analytical components. Besides,
+`GCAMUSAJobs` includes user-configurable options for key model assumptions and
+built-in visualization tools for rapid diagnostics.
+
+# Research impact statement
+
+`GCAMUSAJobs` enables a new workflow to analyze various potential impacts on
+power sector jobs across U.S. states. Sources of impact can include, but are not
+limited to, socioeconomic development, environmental change, policy targets, and
+technological advancement. `GCAMUSAJobs` can perform ex-ante quantitative
+analysis of the associated distributional impacts on state-level power sector
+jobs. It can support analytical work in academic research and inform
+policymaking by providing useful information for preparedness and targeted
+responses to the anticipated impacts. To our knowledge, no such tool exists that
+extends the capability of an integrated multi-sector model (e.g., GCAM-USA) to
+analyze the impact on employment. `GCAMUSAJobs` has been used by researchers at
+the University of Maryland (external adopter) for a published report on the
+renewable energy transition in Maryland and its implications
+[@Kennedy2024renewable]. Specifically, the report provides direct job estimates
+at Maryland’s thermal power plants based on facility characteristics (e.g.,
+nameplate capacity, capacity factor, and fuel type) and the employment factors
+produced by this package. Meanwhile, the package is expected to be developed by
+external researchers to expand its capabilities and grow its user base.
+
 
 # Workflow
 
@@ -71,9 +128,8 @@ and calculate associated power sector jobs based on employment factors (Fig. 1).
 The employment factor represents the average number of jobs created per unit of
 power production activity (e.g., jobs per gigawatt). This method is widely used
 in the relevant literature [@rutovitz2015calculating; @mayfield2023labor].
-`GCAMUSAJobs` adopts employment factors from NREL’s Jobs & Economic Development
-Impacts (JEDI) model (<https://www.nrel.gov/analysis/jedi/models.html>), which
-has been broadly used in the literature [@xie2023distributional;
+`GCAMUSAJobs` adopts employment factors from the JEDI model, which has been
+broadly used in the literature [@xie2023distributional;
 @rutovitz2015calculating; @jacobson2017100].
 
 # Key functions
@@ -118,6 +174,11 @@ aggregated over states, associated with U.S. power generation (Fig. 2).
 
 ![Figure. 2. Annual average power sector jobs by fuel and job types over a 5-year model period. Note that y-axes have different scales.](Jobs.png)
 
+# AI usage disclosure
+
+No generative AI tools were used in the development of this software, the
+writing of this manuscript, or the preparation of supporting materials.
+
 # Acknowledgment
 
 This research was supported by the Laboratory Directed Research and Development
@@ -127,14 +188,5 @@ multi-program national laboratory operated for the U.S. Department of Energy
 also appreciate the support from Kanishka Narayan, Ben Bond-Lamberty, Mengqi
 Zhao, and Gokul Iyer. The views and opinions expressed in this paper are those
 of the authors alone.
-
-# Mention
-
-This package is used by researchers at the University of Maryland for a
-published report on the renewable energy transition in Maryland and its
-implications [@Kennedy2024renewable]. Specifically, the report provides direct job estimates at
-Maryland’s thermal power plants based on facility characteristics (e.g.,
-nameplate capacity, capacity factor, and fuel type) and the employment factors
-produced by this package.
 
 # References
