@@ -60,14 +60,30 @@ or job losses, which was also found in other studies [@hanson2023local;
 @mayfield2023labor].
 
 The Global Change Analysis Model (GCAM) and its ancillary model GCAM-USA
-[@GCAM82] are powerful tools for studying energy systems dynamics and evolution.
-Many previous studies have applied or integrated the tool to analyze potential
-impacts on the energy system and associated outcomes due to environmental and
-socioeconomic changes [e.g., @feijoo2020us; @ganji2024implications;
-@ou2018estimating; @pan2025assessment; @zhang2025long]. Currently, GCAM-USA does
-not calculate power sector jobs. `GCAMUSAJobs` addresses this gap by providing
-projected direct power sector jobs based on GCAM-USA output, enhancing the
-functionality of GCAM-USA for labor impact analysis.
+[@GCAM82] are integrated multi-sector models that focus on the interaction among
+human activities, technology, and physical systems. They are powerful tools for
+studying energy systems dynamics and evolution. Many previous studies have
+applied the model to analyze potential impacts on the energy system and
+associated outcomes due to environmental and socioeconomic changes [e.g.,
+@feijoo2020us; @ganji2024implications; @ou2018estimating; @pan2025assessment;
+@zhang2025long]. Currently, GCAM-USA does not calculate power sector jobs.
+`GCAMUSAJobs` addresses this gap by providing projected direct power sector jobs
+based on GCAM-USA output, enhancing the functionality of GCAM-USA for labor
+impact analysis.
+
+# State of the field
+
+To our knowledge, there is currently no tool that extends the capability of an
+integrated multi-sector model such as GCAM-USA to analyze the impact of energy
+system changes on employment. The most closely related available tool is the
+Jobs & Economic Development Impacts (JEDI) model [@nrel_jobs_nodate]. JEDI
+develops employment factors (jobs per unit of capacity) for a range of power
+generation technologies. In contrast, `GCAMUSAJobs` uses JEDI results as an
+input, combining them with outputs from GCAM-USA to analyze employment
+consequences of alternative energy system futures. `GCAMUSAJobs` is
+complementary to JEDI, filling a methodological and software gap by bridging the
+capability of GCAM-USA (or other energy system models) with the information
+provided by JEDI, without duplicating or modifying either of the models.
 
 # Software design
 
@@ -83,14 +99,14 @@ collaboration with GCAM-USA modelers and domain experts in socioeconomics.
 
 `GCAMUSAJobs` is also designed to be easily adaptable to the output of broader
 energy system models to enable extended employment analysis. `GCAMUSAJobs`
-provides detailed employment factors extracted from simulations of the Jobs &
-Economic Development Impacts (JEDI) model [@nrel_jobs_nodate], which calculates
-employment factors under a range of assumptions about power sector technologies.
-This means users can supply capacity activity output from an energy system model
-in the required format and conduct employment analysis using those readily
-applicable employment factors. For GCAM-USA users, the workflow is further
-simplified by directly ingesting GCAM-USA output databases in their original
-format and automatically performing capacity activity and employment analysis.
+provides detailed employment factors extracted from simulations of the JEDI
+model, which calculates employment factors under a range of assumptions about
+power sector technologies. This means users can supply capacity activity output
+from an energy system model in the required format and conduct employment
+analysis using those readily applicable employment factors. For GCAM-USA users,
+the workflow is further simplified by directly ingesting GCAM-USA output
+databases in their original format and automatically performing capacity
+activity and employment analysis.
 
 The package structure also allows users to access intermediate outputs and
 develop custom functions to examine or adapt analytical components. Besides,
@@ -106,10 +122,8 @@ technological advancement. `GCAMUSAJobs` can perform ex-ante quantitative
 analysis of the associated distributional impacts on state-level power sector
 jobs. It can support analytical work in academic research and inform
 policymaking by providing useful information for preparedness and targeted
-responses to the anticipated impacts. To our knowledge, no such tool exists that
-extends the capability of an integrated multi-sector model (e.g., GCAM-USA) to
-analyze the impact on employment. `GCAMUSAJobs` has been used by researchers at
-the University of Maryland (external adopter) for a published report on the
+responses to the anticipated impacts. `GCAMUSAJobs` has been used by researchers
+at the University of Maryland (external adopter) for a published report on the
 renewable energy transition in Maryland and its implications
 [@Kennedy2024renewable]. Specifically, the report provides direct job estimates
 at Maryland’s thermal power plants based on facility characteristics (e.g.,
