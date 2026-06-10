@@ -4,7 +4,9 @@
 
 <!-------------------------->
 <!-------------------------->
-# <a name="Contents"></a>Contents
+<a id="Contents"></a>
+
+## Contents
 <!-------------------------->
 <!-------------------------->
 
@@ -15,12 +17,15 @@
 - [Installation Guide](#InstallGuides)
 - [How-to Guides](#How-toGuides)
 - [User Notice](#UserNotice)
+- [How to Contribute](#How-toContribute)
 
 <br />
 
 <!-------------------------->
 <!-------------------------->
-# <a name="Citation"></a>Citation
+<a id="Citation"></a>
+
+## Citation
 <!-------------------------->
 <!-------------------------->
 
@@ -34,7 +39,9 @@ An R package for employment projections based on GCAM-USA power sector outcomes.
 
 <!-------------------------->
 <!-------------------------->
-# <a name="KeyLinks"></a>Key Links
+<a id="KeyLinks"></a>
+
+## Key Links
 <!-------------------------->
 <!-------------------------->
 
@@ -42,13 +49,17 @@ GitHub Repo: https://github.com/JGCRI/GCAMUSAJobs
 
 Website: https://jgcri.github.io/GCAMUSAJobs/
 
+Step-by-Step Tutorial: https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html 
+
 [Back to Contents](#Contents)
 
 <br />
 
 <!-------------------------->
 <!-------------------------->
-# <a name="RelatedPublications"></a>Related Publications
+<a id="RelatedPublications"></a>
+
+## Related Publications
 <!-------------------------->
 <!-------------------------->
 
@@ -62,7 +73,9 @@ Center for Global Sustainability, University of Maryland. 50 pp. [Link](https://
 
 <!-------------------------->
 <!-------------------------->
-# <a name="Overview"></a>Overview
+<a id="Overview"></a>
+
+## Overview
 <!-------------------------->
 <!-------------------------->
 
@@ -95,7 +108,9 @@ This functionality supports the need for assessing the distributional labor impa
 
 <!-------------------------->
 <!-------------------------->
-# <a name="InstallationGuides"></a>Installation Guides
+<a id="InstallGuides"></a>
+
+## Installation Guides
 <!-------------------------->
 <!-------------------------->
 
@@ -118,7 +133,9 @@ devtools::install_github('JGCRI/GCAMUSAJobs')
 
 <!-------------------------->
 <!-------------------------->
-# <a name="How-toGuides"></a>How-to Guides
+<a id="How-toGuides"></a>
+
+## How-to Guides
 <!-------------------------->
 <!-------------------------->
 
@@ -154,13 +171,52 @@ Here are the key visualization functions:
 
 <!-------------------------->
 <!-------------------------->
-# <a name="UserNotice"></a>User Notice
+<a id="UserNotice"></a>
+
+## User Notice
 <!-------------------------->
 <!-------------------------->
 
 `GCAMUSAJobs`, by default, works with GCAM-USA v7.1, and is compatible with GCAM v6 or later versions conditional on updated [GCAM-USA assumption input](https://jgcri.github.io/GCAMUSAJobs/articles/methods.html) 
 (e.g., plant retirement assumptions), as this package uses three main inputs: GCAM-USA model outputs, GCAM-USA input data and assumptions, and 
 employment factors from the JEDI model. More details can be found [here](https://jgcri.github.io/GCAMUSAJobs/articles/user_notice.html).
+
+[Back to Contents](#Contents)
+
+<br />
+
+<!-------------------------->
+<!-------------------------->
+<a id="How-toContribute"></a>
+
+## How to Contribute
+<!-------------------------->
+<!-------------------------->
+
+Contributions to `GCAMUSAJobs` are welcome. Contributions may include reporting
+bugs, improving documentation, suggesting new features, adding examples,
+improving visualization functions, updating employment factor assumptions, or
+extending the package to work with additional energy-system model outputs.
+If you identify a bug or have a suggestion, please open an issue on the GitHub
+repository and include a clear description of the problem or proposed
+improvement. When relevant, please also include a reproducible example, the
+version of `GCAMUSAJobs` you are using, your R version, and any error messages
+or unexpected outputs.
+
+Code contributions can be submitted through pull requests. Before submitting a
+pull request, please make sure that the proposed change is clearly documented
+and that existing package functions continue to work as expected. For larger
+changes, such as adding new job categories, modifying core assumptions, changing
+the capacity-accounting method, or supporting new model-output formats, we
+recommend opening an issue first to discuss the proposed approach.
+When contributing new data, assumptions, or employment factors, please provide
+the original data source, describe any processing steps, and document the units,
+technology categories, job types, and geographic scope. This is especially
+important because `GCAMUSAJobs` is designed to support transparent and
+reproducible employment analysis.
+
+By contributing to this repository, contributors agree that their contributions
+will be made available under the same license as the package.
 
 [Back to Contents](#Contents)
 
