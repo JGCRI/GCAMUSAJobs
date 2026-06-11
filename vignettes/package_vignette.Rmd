@@ -141,7 +141,7 @@ PLOT_GW(GW_activity)
 ```
 
 
-Colorado
+State level (e.g., Colorado)
 ```{r, warning=FALSE, fig.width=12, fig.height=6, fig.alt=" "}
 PLOT_GW(GW_activity, "CO")
 ```
@@ -154,7 +154,7 @@ National level
 PLOT_JOB(JOB_activity)
 ```
 
-Colorado
+State level (e.g., Colorado)
 ```{r, warning=FALSE, fig.width=12, fig.height=6, fig.alt=" "}
 PLOT_JOB(JOB_activity, "CO")
 ```
@@ -167,7 +167,7 @@ National level
 PLOT_JOB_TYPE(JOB_activity)
 ```
 
-Colorado
+State level (e.g., Colorado)
 ```{r, warning=FALSE, fig.width=12, fig.height=6, fig.alt=" "}
 PLOT_JOB_TYPE(JOB_activity, "CO")
 ```
