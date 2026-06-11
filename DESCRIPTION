@@ -19,6 +19,7 @@ Imports:
     rgcam,
     tidyr,
     ggplot2,
+    sf,
     tibble
 Depends: 
     R (>= 2.10)
