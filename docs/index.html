@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Tool for project jobs based on GCAM-USA results • GCAMUSAJobs</title>
+<title>GCAMUSAJob: An R package for employment projections based on GCAM-USA power sector outcomes • GCAMUSAJobs</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.0/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Tool for project jobs based on GCAM-USA results">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="GCAMUSAJob: An R package for employment projections based on GCAM-USA power sector outcomes">
 <meta name="description" content="This packge projects state-level power sector employment by fuel type and occupation, based on GCAM-USA power sector output.">
 <meta property="og:description" content="This packge projects state-level power sector employment by fuel type and occupation, based on GCAM-USA power sector output.">
 </head>
@@ -92,7 +92,7 @@
 </h2>
 <!-------------------------->
 <!-------------------------->
-<p>Di Sheng, Brian O’Neill, Stephanie Waldhoff, Matthew Binsted, and Ying Zhang. 2025. GCAMUSAJob: An R package for employment projections based on GCAM-USA power sector outcomes. (In progress) <em>Journal of Open Source Software</em>, DOI: XXXX</p>
+<p>Di Sheng, Brian O’Neill, Stephanie Morris, Matthew Binsted, and Ying Zhang. 2026. GCAMUSAJob: An R package for employment projections based on GCAM-USA power sector outcomes. (In progress) <em>Journal of Open Source Software</em>, DOI: XXXX</p>
 <p><a href="#Contents">Back to Contents</a></p>
 <p><br></p>
 <!-------------------------->
@@ -106,7 +106,7 @@
 <!-------------------------->
 <p>GitHub Repo: <a href="https://github.com/JGCRI/GCAMUSAJobs" class="external-link uri">https://github.com/JGCRI/GCAMUSAJobs</a></p>
 <p>Website: <a href="https://jgcri.github.io/GCAMUSAJobs/" class="uri">https://jgcri.github.io/GCAMUSAJobs/</a></p>
-<p>Step-by-Step Tutorial: <a href="https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html" class="uri">https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html</a></p>
+<p>Step-by-Step Example: <a href="https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html" class="uri">https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html</a></p>
 <p><a href="#Contents">Back to Contents</a></p>
 <p><br></p>
 <!-------------------------->
@@ -174,7 +174,7 @@
 </h2>
 <!-------------------------->
 <!-------------------------->
-<p>See <a href="https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html">Package vignette</a> for a step-by-step demonstration of how to use the package. In general, this package generates data tables and visualizations related to power generation and job impacts using GCAM-USA model outputs. The workflow proceeds through a series of functions, each building on the output of the previous one. Here are the key processing functions:</p>
+<p>See <a href="https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html">this page</a> for a step-by-step demonstration of how to use the package. In general, this package generates data tables and visualizations related to power generation and job impacts using GCAM-USA model outputs. The workflow proceeds through a series of functions, each building on the output of the previous one. Here are the key processing functions:</p>
 <table class="table">
 <colgroup>
 <col width="4%">
@@ -293,6 +293,9 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Di Sheng <br><small class="roles"> Author </small>   </li>
+<li>Brian O’Neill <br><small class="roles"> Author </small>   </li>
+<li>Stephanie Morris <br><small class="roles"> Author </small>   </li>
+<li>Matthew Binsted <br><small class="roles"> Author </small>   </li>
 <li>Ying Zhang <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0036-7502" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
@@ -304,7 +307,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Di Sheng, Ying Zhang.</p>
+  <p>Developed by Di Sheng, Brian O’Neill, Stephanie Morris, Matthew Binsted, Ying Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">

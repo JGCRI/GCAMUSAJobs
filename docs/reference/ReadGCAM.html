@@ -80,7 +80,7 @@
 
 
 <dt id="arg-scen-name">scen_name<a class="anchor" aria-label="anchor" href="#arg-scen-name"></a></dt>
-<dd><p>specify the scenario name</p></dd>
+<dd><p>specify the scenario name (this needs to match the scenario name specified in the DB)</p></dd>
 
 
 <dt id="arg-prj-name">prj_name<a class="anchor" aria-label="anchor" href="#arg-prj-name"></a></dt>
@@ -96,11 +96,11 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="va">prj</span> <span class="op">&lt;-</span> <span class="fu">ReadGCAM</span><span class="op">(</span>filetype <span class="op">=</span> <span class="st">'db'</span>,</span></span>
-<span class="r-in"><span>input_path <span class="op">=</span> <span class="st">"path"</span>,</span></span>
-<span class="r-in"><span>db_name <span class="op">=</span> <span class="st">"DB"</span>,</span></span>
+<span class="r-in"><span>input_path <span class="op">=</span> <span class="st">"C:/GODEEP/GCAM7/output"</span>,</span></span>
+<span class="r-in"><span>db_name <span class="op">=</span> <span class="st">"database_basexdbGCAM-USA_Ref"</span>,</span></span>
 <span class="r-in"><span>query <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"my_batch.xml"</span>, package <span class="op">=</span> <span class="st">"GCAMUSAJobs"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>scen_name <span class="op">=</span> <span class="st">"Scenario_from_DB"</span>,</span></span>
-<span class="r-in"><span>prj_name <span class="op">=</span> <span class="st">"A_Project_Name.dat"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>scen_name <span class="op">=</span> <span class="st">"GCAM-USA_Ref"</span>,</span></span>
+<span class="r-in"><span>prj_name <span class="op">=</span> <span class="st">"mydata.dat"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
@@ -109,7 +109,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Di Sheng, Ying Zhang.</p>
+  <p>Developed by Di Sheng, Brian O’Neill, Stephanie Morris, Matthew Binsted, Ying Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">
