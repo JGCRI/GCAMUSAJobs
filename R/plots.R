@@ -73,8 +73,10 @@ PLOT_EF <- function(state = NULL){
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' PLOT_GW(GW_activity, "Net")
 #' PLOT_GW(GW_activity, "Total")
+#' }
 PLOT_GW <- function(GW_activity, state = NULL, method = NULL){
 
   if (is.null(method)||method %in% c("Total", "total")){
@@ -144,7 +146,9 @@ PLOT_GW <- function(GW_activity, state = NULL, method = NULL){
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' PLOT_JOB(JOB_activity)
+#' }
 PLOT_JOB <- function(JOB_activity, state = NULL){
   if(is.null(state)){
     JOB_activity %>%
@@ -193,7 +197,9 @@ PLOT_JOB <- function(JOB_activity, state = NULL){
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' PLOT_JOB_TYPE(JOB_activity)
+#' }
 PLOT_JOB_TYPE <- function(JOB_activity, state = NULL){
 
   if (is.null(state)){
@@ -242,7 +248,9 @@ PLOT_JOB_TYPE <- function(JOB_activity, state = NULL){
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' MAP_JOB(JOB_activity, 2050)
+#' }
 MAP_JOB <- function(JOB_activity, year){
 
   JOB_activity %>%

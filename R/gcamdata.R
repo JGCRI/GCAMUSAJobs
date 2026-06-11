@@ -66,7 +66,9 @@ repeat_add_columns <- function(x, y) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' A23.globaltech_retirement <- read.GCAM.csv("A23.globaltech_retirement")
+#' }
 
 read.GCAM.csv <- function(basename, na.strings="") {
   pathname <- file.path('Assumptions/GCAM', paste0(basename, ".csv"))

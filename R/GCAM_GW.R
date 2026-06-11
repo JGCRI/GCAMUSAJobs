@@ -1,15 +1,19 @@
 
 #' GCAM_GW
 #'
-#' @param elec_gen_activity Output from GCAM_EJ()
+#' @param EJ_activity Output from GCAM_EJ()
 #' @import dplyr tidyr tibble
 #' @return A data frame with state-level capacity activity
 #' @export
 #'
 #' @examples
-#' GW_activity <- GCAM_GW(EJ_activity)
+#' \dontrun{
+#' GW_output <- GCAM_GW(EJ_activity)
+#' }
 
-GCAM_GW <- function(elec_gen_activity){
+GCAM_GW <- function(EJ_activity){
+
+  elec_gen_activity<-EJ_activity$elec_gen_activity
 
   elec_gen_activity %>%
      filter(grepl("hydro", subsector)) %>%
@@ -37,7 +41,9 @@ GCAM_GW <- function(elec_gen_activity){
      bind_rows(tech_GW_geo) ->
     GW_activity
 
-
+  cap_fac_join<- EJ_activity$cap_fac_join
+  GW_output <- list(GW_activity = GW_activity,
+                    cap_fac_join = cap_fac_join)
   # OUTPUT : GW_activity ----
-  return(GW_activity)
+  return(GW_output)
 }

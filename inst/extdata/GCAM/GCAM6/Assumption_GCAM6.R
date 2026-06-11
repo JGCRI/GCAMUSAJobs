@@ -130,7 +130,6 @@ L113.globaltech_OMvar_ATB %>%
   spread(OM, value) %>% 
   mutate(fixed = `OM-fixed`/(`OM-fixed` +`OM-var`),
          variable = `OM-var`/(`OM-fixed` +`OM-var`)) %>% 
-  #TODO: group by technology
   group_by(fuel = subsector) %>% 
   summarise(fixed = mean(fixed),
             variable = mean(variable)) ->

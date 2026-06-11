@@ -42,7 +42,6 @@ local({
       return(FALSE)
 
     # next, check environment variables
-    # TODO: prefer using the configuration one in the future
     envvars <- c(
       "RENV_CONFIG_AUTOLOADER_ENABLED",
       "RENV_AUTOLOADER_ENABLED",
