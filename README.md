@@ -29,7 +29,7 @@
 <!-------------------------->
 <!-------------------------->
 
-Di Sheng, Brian O'Neill, Stephanie Waldhoff, Matthew Binsted, and Ying Zhang. 2025. GCAMUSAJob: 
+Di Sheng, Brian O'Neill, Stephanie Waldhoff, Matthew Binsted, and Ying Zhang. 2026. GCAMUSAJob: 
 An R package for employment projections based on GCAM-USA power sector outcomes. 
 (In progress) *Journal of Open Source Software*, DOI: XXXX
 
@@ -49,7 +49,7 @@ GitHub Repo: https://github.com/JGCRI/GCAMUSAJobs
 
 Website: https://jgcri.github.io/GCAMUSAJobs/
 
-Step-by-Step Tutorial: https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html 
+Step-by-Step Example: https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html 
 
 [Back to Contents](#Contents)
 
@@ -87,7 +87,7 @@ power sector jobs. `GCAMUSAJobs` extends GCAM-USA functionality by
 (2) calculating jobs associated with those activities, including jobs in operation and maintenance (O&M), construction, and decommissioning. 
 
 <div style="text-align: center">
-  <img src="man/figures/workflow.jpg" width="100%">
+  <img src="man/figures/workflow.jpg" width="100%" alt="">
   <p><em>Workflow of GCAMUSAJobs</em></p>
 </div>
 
@@ -139,7 +139,7 @@ devtools::install_github('JGCRI/GCAMUSAJobs')
 <!-------------------------->
 <!-------------------------->
 
-See [Package vignette](https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html) for a step-by-step demonstration of how to use the package. 
+See [this page](https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html) for a step-by-step demonstration of how to use the package. 
 In general, this package generates data tables and visualizations related to power generation and job impacts using GCAM-USA model outputs. The workflow 
 proceeds through a series of functions, each building on the output of the previous one. Here are the key processing functions:
 
