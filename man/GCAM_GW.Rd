@@ -4,10 +4,10 @@
 \alias{GCAM_GW}
 \title{GCAM_GW}
 \usage{
-GCAM_GW(elec_gen_activity)
+GCAM_GW(EJ_activity)
 }
 \arguments{
-\item{elec_gen_activity}{Output from GCAM_EJ()}
+\item{EJ_activity}{Output from GCAM_EJ()}
 }
 \value{
 A data frame with state-level capacity activity
@@ -16,5 +16,7 @@ A data frame with state-level capacity activity
 GCAM_GW
 }
 \examples{
-GW_activity <- GCAM_GW(EJ_activity)
+\dontrun{
+GW_output <- GCAM_GW(EJ_activity)
+}
 }

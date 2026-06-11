@@ -1,30 +1,25 @@
 
 #' OM_JOB
 #'
-#' @param GW_activity Output from GCAM_GW()
+#' @param GW_output Output from GCAM_GW()
 #' @import dplyr tidyr tibble
 #'
 #' @return A data frame of OM job by subsector
 #' @export
 #'
 #' @examples
-#' job.OM <- OM_JOB(GW_activity)
-OM_JOB <- function(GW_activity){
+#' \dontrun{
+#' job.OM <- OM_JOB(GW_output)
+#' }
+OM_JOB <- function(GW_output){
 
   ## adjustment for OM EF ----
 
-  cap_fac_join <- rgcam::getQuery(prj, 'GCAM_USA elec cap-fac by cooling tech') %>%
-     select(scenario, region, year, sector, subsector = subsector...5,
-                  subsector.1 = subsector...6, technology, value) %>%
-     mutate(fuel = subsector,
-                  fuel = ifelse(grepl("offshore", subsector.1), "wind_offshore", fuel),
-                  subsector = gsub(",depth=1", "", subsector.1),
-                  technology = gsub(" ", "", technology),
-                  fuel = ifelse(grepl("CSP", subsector), "CSP", fuel), # separate CSP and PV from solar
-                  fuel = ifelse(grepl("PV", subsector), "PV", fuel))
+  cap_fac_join <- GW_output$cap_fac_join
+  GW_activity <- GW_output$GW_activity
 
   cap_fac_join %>%
-     left_join(OM_cost %>%  rename(sector = sector.name, subsector = subsector.name), # TODO: assumption: OM_cost
+     left_join(OM_cost %>%  rename(sector = sector.name, subsector = subsector.name),
                      by = c("year", "sector", "subsector", "technology")) %>%
     # convert the OM_var cost from 1975$/MWh to 1975$/kW/yr
      mutate(`OM-var` = `OM-var` * 8760 * value / convMW_kW) %>%
@@ -47,7 +42,7 @@ OM_JOB <- function(GW_activity){
                         mutate(scaler = value)) %>%
      bind_rows(OM_share_all %>%
                         filter(sector == "elect_td_bld") %>%
-                        mutate(scaler = 1)) %>%  # TODO: do we need to change the scaler for elect_td_bld?
+                        mutate(scaler = 1)) %>%  
      mutate(fixed_adj = fixed,
                   # fixed_adj = fixed * scaler, # don't adjust for the nameplate capacity
                   variable_adj = variable * scaler) ->
@@ -56,7 +51,7 @@ OM_JOB <- function(GW_activity){
   GW_activity %>%
      filter(activity == "installed") %>%
      filter(Year >= 2020) %>%
-     left_join(EF.JEDI %>%  select(region, unit, OM, fuel), # TODO: assumption EF.JEDI
+     left_join(EF.JEDI %>%  select(region, unit, OM, fuel), 
               by = c("region", "fuel")) %>%
      left_join(OM_share_adj %>%  select(region, Year = year, sector, subsector, technology, fixed_adj),
               by = c("region", "subsector", "technology", "Year")) %>%
@@ -101,7 +96,7 @@ OM_JOB <- function(GW_activity){
 
 #' CON_JOB
 #'
-#' @param GW_activity Output from GCAM_GW()
+#' @param GW_output Output from GCAM_GW()
 #' @param method Specify method for construction job.
 #' "Net": in a given year, a technology pre-mature retirement and newly installed net out.
 #' "Total": in a given year, a technology pre-mature retirement and newly installed can happen at the same time.
@@ -111,15 +106,19 @@ OM_JOB <- function(GW_activity){
 #' @export
 #'
 #' @examples
-#' job.CON <- CON_JOB(GW_activity, "Net")
-#' job.CON <- CON_JOB(GW_activity)
-CON_JOB <- function(GW_activity, method = NULL){
+#' \dontrun{
+#' job.CON <- CON_JOB(GW_output, "Net")
+#' job.CON <- CON_JOB(GW_output)
+#' }
+CON_JOB <- function(GW_output, method = NULL){
   if (is.null(method)||method %in% c("Total", "total")){
     ACTIVITY <-  "additions"
   } else if (method %in% c("Net", "net")){
     ACTIVITY <-  "add_adj"
   } else {stop("Not a valid input, use either 'Net' or 'Total'")
   }
+
+  GW_activity<-GW_output$GW_activity
 
   GW_activity %>%
      filter(Year >= 2020) %>%
@@ -196,7 +195,7 @@ CON_JOB <- function(GW_activity, method = NULL){
 
 #' DECOM_JOB
 #'
-#' @param GW_activity Output from GCAM_GW()
+#' @param GW_output Output from GCAM_GW()
 #' @param method Specify method for construction job.
 #' "Net": in a given year, a technology pre-mature retirement and newly installed net out.
 #' "Total": in a given year, a technology pre-mature retirement and newly installed can happen at the same time.
@@ -205,9 +204,11 @@ CON_JOB <- function(GW_activity, method = NULL){
 #' @export
 #'
 #' @examples
-#' job.DECOM <- DECOM_JOB(GW_activity, "Net")
-#' job.DECOM <- DECOM_JOB(GW_activity)
-DECOM_JOB <- function(GW_activity, method = NULL){
+#' \dontrun{
+#' job.DECOM <- DECOM_JOB(GW_output, "Net")
+#' job.DECOM <- DECOM_JOB(GW_output)
+#' }
+DECOM_JOB <- function(GW_output, method = NULL){
 
   if (is.null(method)||method %in% c("Total", "total")){
     ACTIVITY <-  "retirements"
@@ -216,6 +217,7 @@ DECOM_JOB <- function(GW_activity, method = NULL){
   } else {stop("Not a valid input, use either 'Net' or 'Total'")
   }
 
+  GW_activity<- GW_output$GW_activity
 
   GW_activity %>%
      filter(Year >= 2020) %>%
@@ -260,7 +262,7 @@ DECOM_JOB <- function(GW_activity, method = NULL){
 
 #' GCAM_JOB
 #'
-#' @param GW_activity Output from GCAM_GW()
+#' @param GW_output Output from GCAM_GW()
 #' @param method Specify method for construction job.
 #' "Net": in a given year, a technology pre-mature retirement and newly installed net out.
 #' "Total": in a given year, a technology pre-mature retirement and newly installed can happen at the same time.
@@ -269,13 +271,15 @@ DECOM_JOB <- function(GW_activity, method = NULL){
 #' @export
 #'
 #' @examples
-#' JOB_activity <- GCAM_JOB(GW_activity, "Net")
-#' JOB_activity <- GCAM_JOB(GW_activity)
-GCAM_JOB <- function(GW_activity, method = NULL){
+#' \dontrun{
+#' JOB_activity <- GCAM_JOB(GW_output, "Net")
+#' JOB_activity <- GCAM_JOB(GW_output)
+#' }
+GCAM_JOB <- function(GW_output, method = NULL){
 
-  job.OM <-  OM_JOB(GW_activity)
-  job.CON <-  CON_JOB(GW_activity, method)
-  job.DECOM <-  DECOM_JOB(GW_activity, method)
+  job.OM <-  OM_JOB(GW_output)
+  job.CON <-  CON_JOB(GW_output, method)
+  job.DECOM <-  DECOM_JOB(GW_output, method)
 
   job.OM %>%
      bind_rows(job.CON) %>%

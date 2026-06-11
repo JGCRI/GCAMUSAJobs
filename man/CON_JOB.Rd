@@ -4,10 +4,10 @@
 \alias{CON_JOB}
 \title{CON_JOB}
 \usage{
-CON_JOB(GW_activity, method = NULL)
+CON_JOB(GW_output, method = NULL)
 }
 \arguments{
-\item{GW_activity}{Output from GCAM_GW()}
+\item{GW_output}{Output from GCAM_GW()}
 
 \item{method}{Specify method for construction job.
 "Net": in a given year, a technology pre-mature retirement and newly installed net out.
@@ -20,6 +20,8 @@ A data frame of construction job by subsector
 CON_JOB
 }
 \examples{
-job.CON <- CON_JOB(GW_activity, "Net")
-job.CON <- CON_JOB(GW_activity)
+\dontrun{
+job.CON <- CON_JOB(GW_output, "Net")
+job.CON <- CON_JOB(GW_output)
+}
 }

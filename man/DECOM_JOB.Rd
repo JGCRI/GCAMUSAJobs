@@ -4,10 +4,10 @@
 \alias{DECOM_JOB}
 \title{DECOM_JOB}
 \usage{
-DECOM_JOB(GW_activity, method = NULL)
+DECOM_JOB(GW_output, method = NULL)
 }
 \arguments{
-\item{GW_activity}{Output from GCAM_GW()}
+\item{GW_output}{Output from GCAM_GW()}
 
 \item{method}{Specify method for construction job.
 "Net": in a given year, a technology pre-mature retirement and newly installed net out.
@@ -20,6 +20,8 @@ A data frame of decommission job by subsector
 DECOM_JOB
 }
 \examples{
-job.DECOM <- DECOM_JOB(GW_activity, "Net")
-job.DECOM <- DECOM_JOB(GW_activity)
+\dontrun{
+job.DECOM <- DECOM_JOB(GW_output, "Net")
+job.DECOM <- DECOM_JOB(GW_output)
+}
 }

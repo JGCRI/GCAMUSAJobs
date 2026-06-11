@@ -6,14 +6,16 @@ prj <- ReadGCAM(filetype = 'prj',
                 input_path = system.file("extdata", package = "GCAMUSAJobs"),
                 prj_name = "package.dat")
 EJ_activity <- GCAM_EJ(prj)
-GW_activity <- GCAM_GW(EJ_activity)
-JOB_activity <- GCAM_JOB(GW_activity)
-JOB_activity1 <- GCAM_JOB(GW_activity, "Total")
-JOB_activity2 <- GCAM_JOB(GW_activity, "total")
+elec_gen_activity <- EJ_activity$elec_gen_activity
+GW_output <- GCAM_GW(EJ_activity)
+GW_activity <- GW_output$GW_activity
+JOB_activity <- GCAM_JOB(GW_output)
+JOB_activity1 <- GCAM_JOB(GW_output, "Total")
+JOB_activity2 <- GCAM_JOB(GW_output, "total")
 
 
 test_that("GCAM_EJ function works", {
-  testthat::expect_equal(colnames(EJ_activity), c("scenario", "region", "subsector", "technology", "Year", "Units",
+  testthat::expect_equal(colnames(elec_gen_activity), c("scenario", "region", "subsector", "technology", "Year", "Units",
                                     "value" , "activity", "capacity.factor", "fuel"))
 })
 

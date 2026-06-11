@@ -31,14 +31,19 @@
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="active nav-item"><a class="nav-link" href="../articles/methods.html">Methods</a></li>
+<li class="active nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-methods" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Methods</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-methods">
+<li><a class="dropdown-item" href="../articles/methods.html">Main Methods</a></li>
+    <li><a class="dropdown-item" href="../articles/limitations.html">Limitations</a></li>
+    <li><a class="dropdown-item" href="../articles/user_notice.html">User Notice</a></li>
+  </ul>
+</li>
 <li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/package_vignette.html">package_vignette</a></li>
-    <li><a class="dropdown-item" href="../articles/user_notice.html">user_notice</a></li>
-    <li><a class="dropdown-item" href="../articles/casestudy.html">case study</a></li>
-    <li><a class="dropdown-item" href="../articles/limitations.html">limitations</a></li>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-usage" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Usage</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-usage">
+<li><a class="dropdown-item" href="../articles/package_vignette.html">Step-by-Step Example</a></li>
+    <li><a class="dropdown-item" href="../articles/casestudy.html">Case Study</a></li>
   </ul>
 </li>
       </ul>
@@ -83,30 +88,31 @@ calculation</a> of this package.</p>
 input data and assumptions, and employment factors from the JEDI
 model.</p>
 <p>GCAM-USA provides annual power output projections (in exajoules, EJ)
-by technology and vintage for each model period. The model is calibrated
-to a base year (2015) and projects output every five years through 2100.
-Since the JEDI employment factors are based on capacity, we need data on
-GCAM-USA electricity outcomes in capacity terms, including operational
-capacity, newly installed capacity, and retired capacity. However,
-GCAM-USA does not directly track capacity levels. Therefore, we derive
-capacity information from annual power generation outcomes and
-supplementary data such as capacity factors (i.e., the ratio of the
+by <strong>technology</strong> and <strong>vintage</strong> for each
+model period. The model is calibrated to a base year (2015) and projects
+output every five years through 2100. Since the JEDI employment factors
+are based on <strong>capacity</strong>, we need data on GCAM-USA
+electricity outcomes in capacity terms, including operational capacity,
+newly installed capacity, and retired capacity. However, GCAM-USA does
+not directly track capacity levels. Therefore, we derive capacity
+information from annual power generation outcomes and supplementary data
+such as <strong>capacity factors</strong> (i.e., the ratio of the
 electrical energy produced by a generating unit for the period of time
 considered to the electrical energy that could have been produced at
 continuous full capacity during the same period.)</p>
 <p>GCAM-USA input data and assumptions are used to provide (1) capacity
 factor by technology, (2) power plant retirement pattern, and (3)
-variable and fixed operation and maintenance (O&amp;M) cost. Capacity
-factors and retirement assumptions help derive capacity levels for
-operational, newly installed, and retired capacity. The variable and
-fixed O&amp;M costs are used to differentiate between the corresponding
-variable and fixed O&amp;M employment factors from JEDI. Note that
-GCAM-USA does not include capacity factors for hydropower and geothermal
-power. Therefore, we use alternative data sources. For hydropower, we
-use monthly state-level capacity factors from<sup>1</sup>, with the
-annual state-level average used in this package. For geothermal power,
-due to limited data, we use a capacity factor of 0.76, based on
-estimates from<sup>2</sup>.</p>
+variable and fixed operation and maintenance (O&amp;M) cost.
+<strong>Capacity factors and retirement assumptions</strong> help derive
+capacity levels for operational, newly installed, and retired capacity.
+The variable and fixed O&amp;M costs are used to differentiate between
+the corresponding variable and fixed O&amp;M employment factors from
+JEDI. Note that GCAM-USA does not include capacity factors for
+hydropower and geothermal power. Therefore, we use alternative data
+sources. For hydropower, we use monthly state-level capacity factors
+from<sup>1</sup>, with the annual state-level average used in this
+package. For geothermal power, due to limited data, we use a capacity
+factor of 0.76, based on estimates from<sup>2</sup>.</p>
 <p>Annual employment factors (EF) derived from JEDI are used and, in
 some cases, modified with supplementary data from<sup>3</sup> to
 calculate the number of jobs based on power plant activities.
@@ -217,57 +223,88 @@ from<sup>3</sup>
 </h2>
 <!-------------------------->
 <!-------------------------->
-<p>In GCAM-USA, electricity generation results are reported by fuel (i),
-technology (k), year (t), and vintage (v), where “vintage” refers to the
-year a power plant or unit was built. Based on these results, the
-analysis further distinguishes electricity generation by activity (a),
+<p>In GCAM-USA, electricity generation results are reported by fuel
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>),
+technology
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>),
+year
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>),
+and vintage
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>),
+where “vintage” refers to the year a power plant or unit was built.
+Based on these results, the analysis further distinguishes electricity
+generation by activity
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>),
 such as generation from existing operational or newly added power
 plants, and also estimates retired capacity. Key concepts and formulas
 include:</p>
 <ol style="list-style-type: decimal">
 <li>Power from operational capacity</li>
 </ol>
-<p>This is the electricity generated in year t by all units still in
-operation that were built in vintage v:</p>
+<p>This is the electricity generated in year
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+by all units still in operation that were built in vintage
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><msubsup><mi>J</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mrow><mi>v</mi><mo>,</mo><mi>o</mi><mi>p</mi></mrow></msubsup><mo>=</mo><mi>E</mi><msubsup><mi>J</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mi>v</mi></msubsup></mrow><annotation encoding="application/x-tex">
 EJ_{i,k,t}^{v,op}=EJ_{i,k,t}^v
 </annotation></semantics></math></p>
 <p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><msubsup><mi>J</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mi>v</mi></msubsup></mrow><annotation encoding="application/x-tex">EJ_{i,k,t}^v</annotation></semantics></math>
-is the observed generation for vintage v from GCAM-USA results.</p>
+is the observed generation for vintage
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+from GCAM-USA results.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Potential generation from non-retired installed capacity</li>
 </ol>
-<p>This is the maximum electricity that could be generated in year t by
-all installed units that were built in vintage v, assuming they are
-running at their typical capacity. It differs from the actual
-electricity generated from operational capacity, as some units may be
-temporarily shut down due to market conditions, which would reduce power
-from operational capacity but would not affect the potential generation
-from installed capacity.</p>
+<p>This is the maximum electricity that could be generated in year
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+by all installed units that were built in vintage
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>,
+assuming they are running at their typical capacity. It differs from the
+actual electricity generated from operational capacity, as some units
+may be temporarily shut down due to market conditions, which would
+reduce power from operational capacity but would not affect the
+potential generation from installed capacity.</p>
 <p>To estimate this value from GCAM-USA output, we assume the potential
-generation for each vintage v at period t to be the maximum generation
-observed in any year from t onward:</p>
+generation for each vintage
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+at period
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+to be the maximum generation observed in any year from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+onward:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><msubsup><mi>J</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mrow><mi>v</mi><mo>,</mo><mi>i</mi><mi>n</mi></mrow></msubsup><mo>=</mo><munder><mo>max</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>T</mi><mo>≥</mo><mi>t</mi></mrow></mtd></mtr></mtable></munder><mrow><mo stretchy="true" form="prefix">(</mo><mi>E</mi><msubsup><mi>J</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>T</mi></mrow><mrow><mi>v</mi><mo>,</mo><mi>o</mi><mi>p</mi></mrow></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
 EJ_{i,k,t}^{v,in}=\max_{\substack{T\geq t}} \left(EJ_{i,k,T}^{v,op}\right)
 </annotation></semantics></math></p>
 <p>This approach assumes that if a temporary shutdown of some units is
-reducing power generation in period t, that shutdown will end in some
-future period, at which time generation will increase to its maximum
-potential. The units being temporary shutdown in period t are still
-considered to be part of the non-retired installed capacity in period t,
+reducing power generation in period
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+that shutdown will end in some future period, at which time generation
+will increase to its maximum potential. The units being temporary
+shutdown in period
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+are still considered to be part of the non-retired installed capacity in
+period
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
 which is related to the fixed OM employment factors.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Power from newly installed capacity</li>
 </ol>
-<p>The electricity generated by capacity added in year t (i.e.,
-generation in year t from new builds in the same year t):</p>
+<p>The electricity generated by capacity added in year
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+(i.e., generation in year
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+from new builds in the same year
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>):</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><msubsup><mi>J</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mrow><mi>v</mi><mo>,</mo><mi>a</mi><mi>d</mi><mi>d</mi></mrow></msubsup><mo>=</mo><mi>E</mi><msubsup><mi>J</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mrow><mi>v</mi><mo>=</mo><mi>t</mi></mrow></msubsup></mrow><annotation encoding="application/x-tex">
 EJ_{i,k,t}^{v,add}=EJ_{i,k,t}^{v=t}
 </annotation></semantics></math></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Power Loss from Retired Capacity</li>
 </ol>
-<p>The change in installed generation potential between years t-1 and t,
+<p>The change in installed generation potential between years
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>-1
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
 representing retirements:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><msubsup><mi>J</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mrow><mi>v</mi><mo>,</mo><mi>r</mi><mi>e</mi><mi>t</mi></mrow></msubsup><mo>=</mo><mi>E</mi><msubsup><mi>J</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mrow><mi>v</mi><mo>,</mo><mi>i</mi><mi>n</mi></mrow></msubsup><mo>−</mo><mi>E</mi><msubsup><mi>J</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi><mo>−</mo><mn>1</mn></mrow><mrow><mi>v</mi><mo>,</mo><mi>i</mi><mi>n</mi></mrow></msubsup></mrow><annotation encoding="application/x-tex">
 EJ_{i,k,t}^{v,ret}=EJ_{i,k,t}^{v,in}-EJ_{i,k,t-1}^{v,in}
@@ -302,7 +339,9 @@ available, regardless of whether it’s fully utilized)</li>
 GW_{i,k,t}^{v,in}=\frac{EJ_{i,k,t}^{v,in}}{CF_{i,k,t}}
 </annotation></semantics></math></p>
 <ol start="3" style="list-style-type: decimal">
-<li>Newly installed capacity in year t</li>
+<li>Newly installed capacity in year
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+</li>
 </ol>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><msubsup><mi>W</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mrow><mi>v</mi><mo>,</mo><mi>a</mi><mi>d</mi><mi>d</mi></mrow></msubsup><mo>=</mo><mfrac><mrow><mi>E</mi><msubsup><mi>J</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mrow><mi>v</mi><mo>,</mo><mi>a</mi><mi>d</mi><mi>d</mi></mrow></msubsup></mrow><mrow><mi>C</mi><msub><mi>F</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">
 GW_{i,k,t}^{v,add}=\frac{EJ_{i,k,t}^{v,add}}{CF_{i,k,t}}
@@ -314,12 +353,12 @@ GW_{i,k,t}^{v,add}=\frac{EJ_{i,k,t}^{v,add}}{CF_{i,k,t}}
 GW_{i,k,t}^{v,ret}=\frac{EJ_{i,k,t}^{v,ret}}{CF_{i,k,t}}
 </annotation></semantics></math></p>
 <p>Note that operational capacity may be lower than installed capacity
-because plants can shut down temporarily for economic reasons. These are
-not considered retirements, just underutilization. Fixed O&amp;M jobs
-(e.g., regular maintenance) are assumed to be linked to installed
-capacity, whether or not it’s operating. Variable O&amp;M jobs (e.g.,
-fuel handling, operations) are associated with operational capacity
-only.</p>
+because <strong>plants can shut down temporarily for economic
+reasons</strong>. These are <strong>not</strong> considered retirements,
+just underutilization. Fixed O&amp;M jobs (e.g., regular maintenance)
+are assumed to be linked to installed capacity, whether or not it’s
+operating. Variable O&amp;M jobs (e.g., fuel handling, operations) are
+associated with operational capacity only.</p>
 <p>Regarding capacity retirement, there are two types in GCAM-USA:
 natural retirement
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><msubsup><mi>W</mi><mrow><mi>i</mi><mo>,</mo><mi>k</mi><mo>,</mo><mi>t</mi></mrow><mrow><mi>v</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>n</mi><mi>a</mi><mi>t</mi><mi>_</mi><mi>r</mi><mi>e</mi><mi>t</mi></mrow></msubsup></mrow><annotation encoding="application/x-tex">GW_{i,k,t}^{v,\ nat\_ret}</annotation></semantics></math>)
@@ -471,22 +510,38 @@ calculate annualized construction job EFs:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">l</mi><mspace width="0.222em"></mspace><mi mathvariant="normal">E</mi><mi mathvariant="normal">F</mi></mrow><mo>=</mo><mfrac><mi>N</mi><mrow><mi>T</mi><mo>⋅</mo><mi>C</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
 \mathrm{Annual\ EF}=\frac{N}{T\cdot C}
 </annotation></semantics></math></p>
-<p>where N is total construction full-time equivalents; T is
-construction period (years); C is project capacity (MW).</p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+is total construction full-time equivalents;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+is construction period (years);
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+is project capacity (MW).</p>
 <p>However, GCAM-USA runs in 5-year time-steps, so timing adjustments
 are needed.</p>
-<p>If T ≤ 5 (construction fits within one GCAM period):</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+≤ 5 (construction fits within one GCAM period):</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">l</mi><mspace width="0.222em"></mspace><mi mathvariant="normal">E</mi><mi mathvariant="normal">F</mi></mrow><mo>=</mo><mfrac><mi>N</mi><mrow><mn>5</mn><mi>C</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
 \mathrm{Annual\ EF}=\frac{N}{5C}
 </annotation></semantics></math></p>
 <p>That is, jobs are assigned evenly over the 5-year GCAM period.</p>
-<p>If T &gt; 5 (construction spans multiple GCAM periods): Here we show
-an example of projects spanning two GCAM periods. In this case, from t -
-4 to t (last 5 years of construction):</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+&gt; 5 (construction spans multiple GCAM periods): Here we show an
+example of projects spanning two GCAM periods. In this case, from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+- 4 to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+(last 5 years of construction):</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">E</mi><mi mathvariant="normal">F</mi></mrow><mi>t</mi></msub><mo>=</mo><mfrac><mi>N</mi><mrow><mi>T</mi><mi>C</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
 {\mathrm{EF}}_t=\frac{N}{TC}
 </annotation></semantics></math></p>
-<p>From t - 9 to t - 5 (earlier years):</p>
+<p>From
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+- 9 to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+- 5 (earlier years):</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">E</mi><mi mathvariant="normal">F</mi></mrow><mrow><mi>t</mi><mo>−</mo><mn>5</mn></mrow></msub><mo>=</mo><mfrac><mi>N</mi><mrow><mi>T</mi><mi>C</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>T</mi><mo>−</mo><mn>5</mn></mrow><mn>5</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
 {\mathrm{EF}}_{t-5}=\frac{N}{TC}\left(\frac{T-5}{5}\right)
 </annotation></semantics></math></p>
@@ -496,7 +551,8 @@ time windows at an average annual basis.</p>
 construction, due to the absence of specific construction period data
 from JEDI, we assume an 8-year construction period based on NREL ATB
 data8. Assume GCAM-USA shows 10 MW of nuclear capacity added in 2050. As
-T = 8 years, the construction period spans over two GCAM-USA periods (10
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+= 8 years, the construction period spans over two GCAM-USA periods (10
 years in two 5-year time-steps). The annual construction EF
 (jobs/MW/year) from 2046–2050 (last 5 years) is:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">E</mi><mi mathvariant="normal">F</mi></mrow><mn>2050</mn></msub><mo>=</mo><mfrac><mi>N</mi><mrow><mi>T</mi><mi>C</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
@@ -509,7 +565,9 @@ has construction going on), the average annual construction EF over the
 {\mathrm{EF}}_{2045}=\frac{N}{TC}\left(\frac{8-5}{5}\right)
 </annotation></semantics></math></p>
 <p>As a result, the number of construction jobs due to the 10MW addition
-would be 10 times {EF}_{2050} in 2050 and 10 times
+would be 10 times
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mrow><mi mathvariant="normal">E</mi><mi mathvariant="normal">F</mi></mrow><mn>2050</mn></msub><annotation encoding="application/x-tex">{\mathrm{EF}}_{2050}</annotation></semantics></math>
+in 2050 and 10 times
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mrow><mi mathvariant="normal">E</mi><mi mathvariant="normal">F</mi></mrow><mn>2045</mn></msub><annotation encoding="application/x-tex">{\mathrm{EF}}_{2045}</annotation></semantics></math>
 in 2045.</p>
 <p><br> _________</p>

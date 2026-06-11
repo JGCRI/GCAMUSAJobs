@@ -17,5 +17,7 @@ A data frame with state-level power output from capacity activity
 GCAM_EJ
 }
 \examples{
+\dontrun{
 EJ_activity <- GCAM_EJ(prj)
+}
 }

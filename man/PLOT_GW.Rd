@@ -18,6 +18,8 @@ A trend plot of capacity activity by fuel technology at the national level
 PLOT_GW
 }
 \examples{
+\dontrun{
 PLOT_GW(GW_activity, "Net")
 PLOT_GW(GW_activity, "Total")
+}
 }

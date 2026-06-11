@@ -8,7 +8,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' EJ_activity <- GCAM_EJ(prj)
+#' }
 
 
 GCAM_EJ <- function(prj){
@@ -320,6 +322,11 @@ GCAM_EJ <- function(prj){
     select(-sector, -subsector.1)->
     elec_gen_activity
 
+  EJ_activity <- list(
+    elec_gen_activity = elec_gen_activity,
+    cap_fac_join = cap_fac_join
+  )
+
   # OUTPUT : elec_activity ----
-  return(elec_gen_activity)
+  return(EJ_activity)
 }

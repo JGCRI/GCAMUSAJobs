@@ -1,5 +1,5 @@
 ---
-title: "package_vignette"
+title: "Step-by-Step Example"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{package_vignette}
@@ -57,20 +57,22 @@ The power generation output is annual, broken down by state, fuel type, and tech
 
 ```{r Step2}
 EJ_activity <- GCAM_EJ(prj)
+elec_gen_activity <- EJ_activity$elec_gen_activity
 ```
 
 
 **Show a subset of the outcomes**
 ```{r}
-head(EJ_activity %>% filter(region == "TX", Year == 2050), 10)
-head(EJ_activity %>% filter(region == "CA", Year == 2050), 10)
+head(elec_gen_activity %>% filter(region == "TX", Year == 2050), 10)
+head(elec_gen_activity %>% filter(region == "CA", Year == 2050), 10)
 ```
 
 # Step3: calculate detailed capacity outcomes
 This step derives the underlying facility capacity by different activities based on power generation outcome in **Step 2**. Capacity outcome of this step is at annual level by state, fuel type, and technology.
 
 ```{r}
-GW_activity <- GCAM_GW(EJ_activity)
+GW_output <- GCAM_GW(EJ_activity)
+GW_activity <- GW_output$GW_activity
 ```
 
 **Show a subset of the outcomes**
@@ -87,17 +89,17 @@ When the **Total** method is used (default), capacity additions and pre-mature r
 
 **Default: use the *Total* method**
 ```{r}
-JOB_activity <- GCAM_JOB(GW_activity)
+JOB_activity <- GCAM_JOB(GW_output)
 ```
 
 **Specify to use the *Total* method**
 ```{r}
-JOB_activity2 <- GCAM_JOB(GW_activity, "Total")
+JOB_activity2 <- GCAM_JOB(GW_output, "Total")
 ```
 
 **Specify to use the *Net* method**
 ```{r}
-JOB_activity3 <- GCAM_JOB(GW_activity, "Net")
+JOB_activity3 <- GCAM_JOB(GW_output, "Net")
 ```
 
 **Compare outcomes with *Total* and *Net* methods**
@@ -119,13 +121,13 @@ This step plots the employment factor from the [JEDI](https://www.nrel.gov/analy
 
 Running the function with no argument plots employment factors of all states.
 
-```{r, warning=FALSE, fig.width=18, fig.height=6}
+```{r, warning=FALSE, fig.width=18, fig.height=6, fig.alt=" "}
 PLOT_EF()
 ```
 
 
 Specifying a state of interest plots the employment factor of the chosen state.
-```{r, warning=FALSE, fig.width=18, fig.height=6}
+```{r, warning=FALSE, fig.width=18, fig.height=6, fig.alt=" "}
 PLOT_EF("CO")
 ```
 
@@ -134,13 +136,13 @@ PLOT_EF("CO")
 This step plots the annual average capacity by fuel and activity that is assumed to exist throughout each GCAM model timestep (by default GCAM uses 5 year steps). Red + Green is the total capacity in operation in a year, where red bars denote the capacity in operation that is newly installed in a given year, and green denotes the capacity in operation was built in the past; Blue bars denote the capacity change due to retirement.
 
 National level
-```{r, warning=FALSE, fig.width=12, fig.height=6}
+```{r, warning=FALSE, fig.width=12, fig.height=6, fig.alt=" "}
 PLOT_GW(GW_activity)
 ```
 
 
 Colorado
-```{r, warning=FALSE, fig.width=12, fig.height=6}
+```{r, warning=FALSE, fig.width=12, fig.height=6, fig.alt=" "}
 PLOT_GW(GW_activity, "CO")
 ```
 
@@ -148,12 +150,12 @@ PLOT_GW(GW_activity, "CO")
 This step plots the power sector average annual direct job by fuel and job type that are assumed to exist throughout each GCAM model timestep (by default GCAM uses 5 year steps).
 
 National level
-```{r, warning=FALSE, fig.width=12, fig.height=6}
+```{r, warning=FALSE, fig.width=12, fig.height=6, fig.alt=" "}
 PLOT_JOB(JOB_activity)
 ```
 
 Colorado
-```{r, warning=FALSE, fig.width=12, fig.height=6}
+```{r, warning=FALSE, fig.width=12, fig.height=6, fig.alt=" "}
 PLOT_JOB(JOB_activity, "CO")
 ```
 
@@ -161,26 +163,26 @@ PLOT_JOB(JOB_activity, "CO")
 This step plots the power sector average annual direct jobs by job type that are assumed to exist throughout each GCAM model timestep (by default GCAM uses 5 year step).
 
 National level
-```{r, warning=FALSE, fig.width=12, fig.height=6}
+```{r, warning=FALSE, fig.width=12, fig.height=6, fig.alt=" "}
 PLOT_JOB_TYPE(JOB_activity)
 ```
 
 Colorado
-```{r, warning=FALSE, fig.width=12, fig.height=6}
+```{r, warning=FALSE, fig.width=12, fig.height=6, fig.alt=" "}
 PLOT_JOB_TYPE(JOB_activity, "CO")
 ```
 
 # Step9: job by state of a given year
 This step maps out the state-level power sector direct job in a given year.
 
-```{r, warning=FALSE, fig.width=16, fig.height=12}
+```{r, warning=FALSE, fig.width=16, fig.height=12, fig.alt=" "}
 MAP_JOB(JOB_activity, 2020)
 ```
 
-```{r, warning=FALSE, fig.width=16, fig.height=12}
+```{r, warning=FALSE, fig.width=16, fig.height=12, fig.alt=" "}
 MAP_JOB(JOB_activity, 2050)
 ```
 
-```{r, warning=FALSE, fig.width=16, fig.height=12}
+```{r, warning=FALSE, fig.width=16, fig.height=12, fig.alt=" "}
 MAP_JOB(JOB_activity, 2100)
 ```

@@ -18,5 +18,7 @@ A map of state level total direct power sector job of a given year
 MAP_JOB
 }
 \examples{
+\dontrun{
 MAP_JOB(JOB_activity, 2050)
+}
 }

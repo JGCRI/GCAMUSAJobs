@@ -5,19 +5,21 @@
 #' @param input_path specify the full path for the input file
 #' @param db_name specify the database name
 #' @param query use the default query file in the package "my_batch.xml"
-#' @param scen_name specify the scenario name
+#' @param scen_name specify the scenario name (this needs to match the scenario name specified in the DB)
 #' @param prj_name specify the project (.dat) name either to name it or load the existed one
 #'
 #' @return a list to be called in other functions
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' prj <- ReadGCAM(filetype = 'db',
-#' input_path = "path",
-#' db_name = "DB",
-#' query = system.file("extdata", "my_batch.xml", package = "GCAMUSAJobs"),,
-#' scen_name = "Scenario_from_DB",
-#' prj_name = "A_Project_Name.dat")
+#' input_path = "C:/GODEEP/GCAM7/output",
+#' db_name = "database_basexdbGCAM-USA_Ref",
+#' query = system.file("extdata", "my_batch.xml", package = "GCAMUSAJobs"),
+#' scen_name = "GCAM-USA_Ref",
+#' prj_name = "mydata.dat")
+#' }
 
 ReadGCAM <- function(filetype,
                      input_path, # full path of the input file (db or .dat)
