@@ -10,19 +10,19 @@ vignette: >
 We conducted a case study, utilizing this R package, to *evaluate the employment implications of transitioning the U.S. power sector to net-zero greenhouse gas emissions by mid-century*. Transitioning to a low-carbon power system introduces heterogeneous impacts on employment across regions and sectors^1–4^. Integrating energy and employment modeling is crucial to assess and address the impacts of decarbonization on employment. This analysis uses [outputs from GCAM-USA](https://doi.org/10.5281/zenodo.10642507) and applies the package to estimate direct power sector employment under two scenarios: Business-as-Usual (BAU) and Net Zero (NZ). We find that achieving Net Zero in the U.S. by mid-century promotes direct employment for power generation, especially in Texas, Alaska, Oklahoma, and Florida. 
 
 <div style="text-align: center">
-  <img src="../man/figures/direct_employ_map.jpg" width="100%">
+  <img src="../man/figures/direct_employ_map.jpg" width="100%" alt="">
 </div>
 
 Cumulatively, direct employment of the power sector under the NZ scenario is projected to be 2.36 times that in the BAU from 2025 to 2050. Under the net-zero scenario, employment growth mainly comes from solar, nuclear, and wind power generation.
 
 <div style="text-align: center">
-  <img src="../man/figures/direct_employ_panel.jpg" width="100%">
+  <img src="../man/figures/direct_employ_panel.jpg" width="100%" alt="">
 </div>
 
 Decarbonization in the power sector drives steady growth for O&M jobs, while the cyclical nature of construction and decommission jobs creates volatility in job growth.
 
 <div style="text-align: center">
-  <img src="../man/figures/direct_employ_change.jpg" width="50%">
+  <img src="../man/figures/direct_employ_change.jpg" width="50%" alt="">
 </div>
 
 *Side note*: This package is also used by researchers at the University of Maryland for a published report on the renewable energy transition in Maryland and its implications^5^. Specifically, the report provides direct job estimates at Maryland's thermal power plants based on facility characteristics (e.g., nameplate capacity, capacity factor, and fuel type) and the employment factors produced by this package. For more details, please refer to ^5^.

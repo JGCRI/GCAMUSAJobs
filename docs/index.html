@@ -33,14 +33,19 @@
       <ul class="navbar-nav me-auto">
 <li class="active nav-item"><a class="nav-link" href="index.html">Home</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
-<li class="nav-item"><a class="nav-link" href="articles/methods.html">Methods</a></li>
 <li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/package_vignette.html">package_vignette</a></li>
-    <li><a class="dropdown-item" href="articles/user_notice.html">user_notice</a></li>
-    <li><a class="dropdown-item" href="articles/casestudy.html">case study</a></li>
-    <li><a class="dropdown-item" href="articles/limitations.html">limitations</a></li>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-methods" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Methods</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-methods">
+<li><a class="dropdown-item" href="articles/methods.html">Main Methods</a></li>
+    <li><a class="dropdown-item" href="articles/limitations.html">Limitations</a></li>
+    <li><a class="dropdown-item" href="articles/user_notice.html">User Notice</a></li>
+  </ul>
+</li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-usage" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Usage</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-usage">
+<li><a class="dropdown-item" href="articles/package_vignette.html">Step-by-Step Example</a></li>
+    <li><a class="dropdown-item" href="articles/casestudy.html">Case Study</a></li>
   </ul>
 </li>
       </ul>
@@ -61,11 +66,10 @@
 <p><br></p>
 <!-------------------------->
 <!-------------------------->
-</div>
-<div class="section level1">
-<h1 id="contents">
-<a name="Contents"></a>Contents<a class="anchor" aria-label="anchor" href="#contents"></a>
-</h1>
+<p><a id="Contents"></a></p>
+<div class="section level2">
+<h2 id="contents">Contents<a class="anchor" aria-label="anchor" href="#contents"></a>
+</h2>
 <!-------------------------->
 <!-------------------------->
 <ul>
@@ -76,15 +80,16 @@
 <li><a href="#InstallGuides">Installation Guide</a></li>
 <li><a href="#How-toGuides">How-to Guides</a></li>
 <li><a href="#UserNotice">User Notice</a></li>
+<li><a href="#How-toContribute">How to Contribute</a></li>
 </ul>
 <p><br></p>
 <!-------------------------->
 <!-------------------------->
+<p><a id="Citation"></a></p>
 </div>
-<div class="section level1">
-<h1 id="citation">
-<a name="Citation"></a>Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
-</h1>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
 <!-------------------------->
 <!-------------------------->
 <p>Di Sheng, Brian O’Neill, Stephanie Waldhoff, Matthew Binsted, and Ying Zhang. 2025. GCAMUSAJob: An R package for employment projections based on GCAM-USA power sector outcomes. (In progress) <em>Journal of Open Source Software</em>, DOI: XXXX</p>
@@ -92,24 +97,25 @@
 <p><br></p>
 <!-------------------------->
 <!-------------------------->
+<p><a id="KeyLinks"></a></p>
 </div>
-<div class="section level1">
-<h1 id="key-links">
-<a name="KeyLinks"></a>Key Links<a class="anchor" aria-label="anchor" href="#key-links"></a>
-</h1>
+<div class="section level2">
+<h2 id="key-links">Key Links<a class="anchor" aria-label="anchor" href="#key-links"></a>
+</h2>
 <!-------------------------->
 <!-------------------------->
 <p>GitHub Repo: <a href="https://github.com/JGCRI/GCAMUSAJobs" class="external-link uri">https://github.com/JGCRI/GCAMUSAJobs</a></p>
 <p>Website: <a href="https://jgcri.github.io/GCAMUSAJobs/" class="uri">https://jgcri.github.io/GCAMUSAJobs/</a></p>
+<p>Step-by-Step Tutorial: <a href="https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html" class="uri">https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html</a></p>
 <p><a href="#Contents">Back to Contents</a></p>
 <p><br></p>
 <!-------------------------->
 <!-------------------------->
+<p><a id="RelatedPublications"></a></p>
 </div>
-<div class="section level1">
-<h1 id="related-publications">
-<a name="RelatedPublications"></a>Related Publications<a class="anchor" aria-label="anchor" href="#related-publications"></a>
-</h1>
+<div class="section level2">
+<h2 id="related-publications">Related Publications<a class="anchor" aria-label="anchor" href="#related-publications"></a>
+</h2>
 <!-------------------------->
 <!-------------------------->
 <p>Kennedy, K.M., S. Vo, K. Vangelov, B. Buddi, S. Smith, J. Lou, R. Cui, and N. Hultman (2024). “The Renewable Energy Transition in Maryland: Implications for Energy Generating Facilities and Small Businesses.” Center for Global Sustainability, University of Maryland. 50 pp. <a href="https://mde.maryland.gov/programs/air/ClimateChange/MCCC/Doclib_EIR/The%20Renewable%20Energy%20Transition%20in%20Maryland,%20Energy%20Industry%20Revitalization%20Working%20Group%20--%20Report_Final.pdf" class="external-link">Link</a></p>
@@ -117,16 +123,16 @@
 <p><br></p>
 <!-------------------------->
 <!-------------------------->
+<p><a id="Overview"></a></p>
 </div>
-<div class="section level1">
-<h1 id="overview">
-<a name="Overview"></a>Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
-</h1>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
 <!-------------------------->
 <!-------------------------->
 <p><code>GCAMUSAJobs</code> aims to provide employment projections for the power sector based on GCAM-USA output. Specifically, this package was developed to post-process electric power projections from <a href="https://jgcri.github.io/gcam-doc/gcam-usa.html" class="external-link">GCAM-USA</a>, enabling the estimation of future power sector jobs at the state-level by generation technology and job type. Currently, GCAM-USA does not calculate power sector jobs. <code>GCAMUSAJobs</code> extends GCAM-USA functionality by (1) estimating the power plant capacity levels of different activities – operational capacity, capacity addition, and retirement; and (2) calculating jobs associated with those activities, including jobs in operation and maintenance (O&amp;M), construction, and decommissioning.</p>
 <div style="text-align: center">
-<img src="reference/figures/workflow.jpg" width="100%"><p>
+<img src="reference/figures/workflow.jpg" width="100%" alt=""><p>
 <em>Workflow of GCAMUSAJobs</em>
 </p>
 </div>
@@ -137,11 +143,11 @@
 <p><br></p>
 <!-------------------------->
 <!-------------------------->
+<p><a id="InstallGuides"></a></p>
 </div>
-<div class="section level1">
-<h1 id="installation-guides">
-<a name="InstallationGuides"></a>Installation Guides<a class="anchor" aria-label="anchor" href="#installation-guides"></a>
-</h1>
+<div class="section level2">
+<h2 id="installation-guides">Installation Guides<a class="anchor" aria-label="anchor" href="#installation-guides"></a>
+</h2>
 <!-------------------------->
 <!-------------------------->
 <ol style="list-style-type: decimal">
@@ -161,11 +167,11 @@
 <p><br></p>
 <!-------------------------->
 <!-------------------------->
+<p><a id="How-toGuides"></a></p>
 </div>
-<div class="section level1">
-<h1 id="how-to-guides">
-<a name="How-toGuides"></a>How-to Guides<a class="anchor" aria-label="anchor" href="#how-to-guides"></a>
-</h1>
+<div class="section level2">
+<h2 id="how-to-guides">How-to Guides<a class="anchor" aria-label="anchor" href="#how-to-guides"></a>
+</h2>
 <!-------------------------->
 <!-------------------------->
 <p>See <a href="https://jgcri.github.io/GCAMUSAJobs/articles/package_vignette.html">Package vignette</a> for a step-by-step demonstration of how to use the package. In general, this package generates data tables and visualizations related to power generation and job impacts using GCAM-USA model outputs. The workflow proceeds through a series of functions, each building on the output of the previous one. Here are the key processing functions:</p>
@@ -233,14 +239,28 @@
 <p><br></p>
 <!-------------------------->
 <!-------------------------->
+<p><a id="UserNotice"></a></p>
 </div>
-<div class="section level1">
-<h1 id="user-notice">
-<a name="UserNotice"></a>User Notice<a class="anchor" aria-label="anchor" href="#user-notice"></a>
-</h1>
+<div class="section level2">
+<h2 id="user-notice">User Notice<a class="anchor" aria-label="anchor" href="#user-notice"></a>
+</h2>
 <!-------------------------->
 <!-------------------------->
 <p><code>GCAMUSAJobs</code>, by default, works with GCAM-USA v7.1, and is compatible with GCAM v6 or later versions conditional on updated <a href="https://jgcri.github.io/GCAMUSAJobs/articles/methods.html">GCAM-USA assumption input</a> (e.g., plant retirement assumptions), as this package uses three main inputs: GCAM-USA model outputs, GCAM-USA input data and assumptions, and employment factors from the JEDI model. More details can be found <a href="https://jgcri.github.io/GCAMUSAJobs/articles/user_notice.html">here</a>.</p>
+<p><a href="#Contents">Back to Contents</a></p>
+<p><br></p>
+<!-------------------------->
+<!-------------------------->
+<p><a id="How-toContribute"></a></p>
+</div>
+<div class="section level2">
+<h2 id="how-to-contribute">How to Contribute<a class="anchor" aria-label="anchor" href="#how-to-contribute"></a>
+</h2>
+<!-------------------------->
+<!-------------------------->
+<p>Contributions to <code>GCAMUSAJobs</code> are welcome. Contributions may include reporting bugs, improving documentation, suggesting new features, adding examples, improving visualization functions, updating employment factor assumptions, or extending the package to work with additional energy-system model outputs. If you identify a bug or have a suggestion, please open an issue on the GitHub repository and include a clear description of the problem or proposed improvement. When relevant, please also include a reproducible example, the version of <code>GCAMUSAJobs</code> you are using, your R version, and any error messages or unexpected outputs.</p>
+<p>Code contributions can be submitted through pull requests. Before submitting a pull request, please make sure that the proposed change is clearly documented and that existing package functions continue to work as expected. For larger changes, such as adding new job categories, modifying core assumptions, changing the capacity-accounting method, or supporting new model-output formats, we recommend opening an issue first to discuss the proposed approach. When contributing new data, assumptions, or employment factors, please provide the original data source, describe any processing steps, and document the units, technology categories, job types, and geographic scope. This is especially important because <code>GCAMUSAJobs</code> is designed to support transparent and reproducible employment analysis.</p>
+<p>By contributing to this repository, contributors agree that their contributions will be made available under the same license as the package.</p>
 <p><a href="#Contents">Back to Contents</a></p>
 <p><br> _________</p>
 <ol style="list-style-type: decimal">
@@ -251,12 +271,12 @@
 </ol>
 <p><br><br><br></p>
 </div>
-
+</div>
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://opensource.org/licenses/BSD-3-Clause" class="external-link">BSD</a> 2-Clause License + file <a href="LICENSE-text.html">LICENSE</a>
+<a href="https://opensource.org/licenses/BSD-2-Clause" class="external-link">BSD_2_clause</a> + file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
@@ -272,8 +292,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Di Sheng <br><small class="roles"> Author, maintainer </small>   </li>
-<li>Ying Zhang <br><small class="roles"> Maintainer </small> <a href="https://orcid.org/0000-0002-0036-7502" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Di Sheng <br><small class="roles"> Author </small>   </li>
+<li>Ying Zhang <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0036-7502" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 

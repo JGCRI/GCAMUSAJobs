@@ -12,7 +12,7 @@ navbar:
       - home
       - reference
       - methods
-      - articles
+      - usage
   components:
     home:
       text: Home
@@ -20,16 +20,19 @@ navbar:
 
     methods:
       text: Methods
-      href: articles/methods.html
-
-    articles:
-      text: Articles
       menu:
-        - text: package_vignette
-          href: articles/package_vignette.html
-        - text: user_notice
-          href: articles/user_notice.html
-        - text: case study
-          href: articles/casestudy.html
-        - text: limitations
+        - text: Main Methods
+          href: articles/methods.html
+        - text: Limitations
           href: articles/limitations.html
+        - text: User Notice
+          href: articles/user_notice.html
+
+    usage:
+      text: Usage
+      menu:
+        - text: Step-by-Step Example
+          href: articles/package_vignette.html
+        - text: Case Study
+          href: articles/casestudy.html
+
