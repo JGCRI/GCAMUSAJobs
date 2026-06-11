@@ -29,7 +29,7 @@
 <!-------------------------->
 <!-------------------------->
 
-Di Sheng, Brian O'Neill, Stephanie Waldhoff, Matthew Binsted, and Ying Zhang. 2026. GCAMUSAJob: 
+Di Sheng, Brian O'Neill, Stephanie Morris, Matthew Binsted, and Ying Zhang. 2026. GCAMUSAJob: 
 An R package for employment projections based on GCAM-USA power sector outcomes. 
 (In progress) *Journal of Open Source Software*, DOI: XXXX
 
