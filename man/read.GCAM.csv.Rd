@@ -18,5 +18,7 @@ A data frame from raw csv file saved in the Assumptions/GCAM folder
 read raw csv files from Assumptions/GCAM folder
 }
 \examples{
+\dontrun{
 A23.globaltech_retirement <- read.GCAM.csv("A23.globaltech_retirement")
+}
 }

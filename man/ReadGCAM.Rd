@@ -22,7 +22,7 @@ ReadGCAM(
 
 \item{query}{use the default query file in the package "my_batch.xml"}
 
-\item{scen_name}{specify the scenario name}
+\item{scen_name}{specify the scenario name (this needs to match the scenario name specified in the DB)}
 
 \item{prj_name}{specify the project (.dat) name either to name it or load the existed one}
 }
@@ -33,10 +33,12 @@ a list to be called in other functions
 ReadGCAM
 }
 \examples{
+\dontrun{
 prj <- ReadGCAM(filetype = 'db',
-input_path = "path",
-db_name = "DB",
-query = system.file("extdata", "my_batch.xml", package = "GCAMUSAJobs"),,
-scen_name = "Scenario_from_DB",
-prj_name = "A_Project_Name.dat")
+input_path = "C:/GODEEP/GCAM7/output",
+db_name = "database_basexdbGCAM-USA_Ref",
+query = system.file("extdata", "my_batch.xml", package = "GCAMUSAJobs"),
+scen_name = "GCAM-USA_Ref",
+prj_name = "mydata.dat")
+}
 }

@@ -16,5 +16,7 @@ A trend plot of job by job type at the national level
 PLOT_JOB_TYPE
 }
 \examples{
+\dontrun{
 PLOT_JOB_TYPE(JOB_activity)
+}
 }

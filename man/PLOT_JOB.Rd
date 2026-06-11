@@ -16,5 +16,7 @@ A trend plot of job by fuel technology and job type at the national level
 PLOT_JOB
 }
 \examples{
+\dontrun{
 PLOT_JOB(JOB_activity)
+}
 }

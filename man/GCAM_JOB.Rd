@@ -4,10 +4,10 @@
 \alias{GCAM_JOB}
 \title{GCAM_JOB}
 \usage{
-GCAM_JOB(GW_activity, method = NULL)
+GCAM_JOB(GW_output, method = NULL)
 }
 \arguments{
-\item{GW_activity}{Output from GCAM_GW()}
+\item{GW_output}{Output from GCAM_GW()}
 
 \item{method}{Specify method for construction job.
 "Net": in a given year, a technology pre-mature retirement and newly installed net out.
@@ -20,6 +20,8 @@ A data frame of all power sector direct job by subsector
 GCAM_JOB
 }
 \examples{
-JOB_activity <- GCAM_JOB(GW_activity, "Net")
-JOB_activity <- GCAM_JOB(GW_activity)
+\dontrun{
+JOB_activity <- GCAM_JOB(GW_output, "Net")
+JOB_activity <- GCAM_JOB(GW_output)
+}
 }

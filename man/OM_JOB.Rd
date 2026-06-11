@@ -4,10 +4,10 @@
 \alias{OM_JOB}
 \title{OM_JOB}
 \usage{
-OM_JOB(GW_activity)
+OM_JOB(GW_output)
 }
 \arguments{
-\item{GW_activity}{Output from GCAM_GW()}
+\item{GW_output}{Output from GCAM_GW()}
 }
 \value{
 A data frame of OM job by subsector
@@ -16,5 +16,7 @@ A data frame of OM job by subsector
 OM_JOB
 }
 \examples{
-job.OM <- OM_JOB(GW_activity)
+\dontrun{
+job.OM <- OM_JOB(GW_output)
+}
 }
