@@ -178,7 +178,7 @@ analysis of the associated distributional impacts on state-level power sector
 jobs. It can support analytical work in academic research and inform
 policymaking by providing useful information for preparedness and targeted
 responses to the anticipated impacts. For demonstration purposes, we use
-`GCAMUSAJobs` to post-process the outcome from GCAM v7.1 for a standard reference
+`GCAMUSAJobs` to post-process the outcome from GCAM-USA v7.1 for a standard reference
 scenario, estimating the direct job, aggregated over states, associated with
 U.S. power generation (Figure 2).
 
