@@ -8,6 +8,8 @@ PLOT_JOB_TYPE(JOB_activity, state = NULL)
 }
 \arguments{
 \item{JOB_activity}{Output of GCAM_JOB()}
+
+\item{state}{"state abbreviation" or null}
 }
 \value{
 A trend plot of job by job type at the national level

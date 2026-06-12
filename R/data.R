@@ -82,3 +82,107 @@
 #' @description
 #' specify plot theme_leg
 "theme_leg"
+
+#' Conversion factor from exajoules to kilowatt-hours
+#'
+#' A numeric conversion factor used to convert energy values from EJ to kWh.
+#'
+#' @format A numeric value.
+#' @keywords datasets
+"CONV_EJ_KWH"
+
+#' Conversion factor from gigawatt-hours to exajoules
+#'
+#' A numeric conversion factor used to convert energy values from GWh to EJ.
+#'
+#' @format A numeric value.
+#' @keywords datasets
+"CONV_GWH_EJ"
+
+#' Raw JEDI employment factors
+#'
+#' Raw employment factor data used in GCAM-USA jobs calculations.
+#'
+#' @format A data frame.
+#' @keywords datasets
+"EF.JEDI.RAW"
+
+#' Processed JEDI employment factors
+#'
+#' Processed employment factor data used in GCAM-USA jobs calculations.
+#'
+#' @format A data frame.
+#' @keywords datasets
+"EF.JEDI"
+
+#' GCAM future start year
+#'
+#' Starting year used for future GCAM model periods.
+#'
+#' @format A numeric value.
+#' @keywords datasets
+"GCAM_futr_start"
+
+#' GCAM future end year
+#'
+#' Ending year used for future GCAM model periods.
+#'
+#' @format A numeric value.
+#' @keywords datasets
+"GCAM_futr_end"
+
+#' GCAM model time step
+#'
+#' Time step used between GCAM model years.
+#'
+#' @format A numeric value.
+#' @keywords datasets
+"GCAM_model_step"
+
+#' Conversion factor from gigawatts to megawatts
+#'
+#' A numeric conversion factor used to convert GW to MW.
+#'
+#' @format A numeric value.
+#' @keywords datasets
+"convGW_MW"
+
+#' Conversion factor from megawatts to kilowatts
+#'
+#' A numeric conversion factor used to convert MW to kW.
+#'
+#' @format A numeric value.
+#' @keywords datasets
+"convMW_kW"
+
+#' GCAM-USA states
+#'
+#' State-level identifiers used by GCAM-USA jobs calculations.
+#'
+#' @format A character vector or data frame.
+#' @keywords datasets
+"gcamusa.STATES"
+
+#' Geographic capacity factor data
+#'
+#' Geographic capacity factor data used in GCAM-USA jobs calculations.
+#'
+#' @format A data frame.
+#' @keywords datasets
+"geo_cf"
+
+#' Example trial data
+#'
+#' Example data used for testing or demonstration.
+#'
+#' @format A data frame.
+#' @keywords datasets
+"trial_data"
+
+#' GCAM year mapping data
+#'
+#' Mapping between GCAM model years and related time periods.
+#'
+#' @format A data frame.
+#' @keywords datasets
+"years_mapping"

@@ -56,12 +56,12 @@ repeat_add_columns <- function(x, y) {
 
 #' read.GCAM.csv
 #'
-#' read raw csv files from Assumptions/GCAM folder
+#' read raw csv files from inst/extdata/GCAM folder
 #'
 #' @param basename name of the file to be read in, without .csv
 #' @param na.strings set to ""
 #'
-#' @return A data frame from raw csv file saved in the Assumptions/GCAM folder
+#' @return A data frame from raw csv file saved in the inst/extdata/GCAM folder
 #' @importFrom utils read.csv
 #' @export
 #'
@@ -71,7 +71,7 @@ repeat_add_columns <- function(x, y) {
 #' }
 
 read.GCAM.csv <- function(basename, na.strings="") {
-  pathname <- file.path('Assumptions/GCAM', paste0(basename, ".csv"))
+  pathname <- file.path('inst/extdata/GCAM', paste0(basename, ".csv"))
   return( read.csv(pathname, na.strings=na.strings, stringsAsFactors=F, comment.char = "#") )
 }
 

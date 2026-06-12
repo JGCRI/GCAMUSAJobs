@@ -6,11 +6,11 @@
 \usage{
 ReadGCAM(
   filetype,
-  input_path,
-  db_name,
+  input_path = NULL,
+  db_name = NULL,
   query = system.file("extdata", "my_batch.xml", package = "GCAMUSAJobs"),
-  scen_name,
-  prj_name
+  scen_name = NULL,
+  prj_name = NULL
 )
 }
 \arguments{

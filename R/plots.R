@@ -64,7 +64,7 @@ PLOT_EF <- function(state = NULL){
 
 
 #' PLOT_GW
-#'
+#' @param state "state abbreviation" or null
 #' @param GW_activity Output from GCAM_GW()
 #' @param method "Net" or "Total"
 #' @import ggplot2 dplyr tidyr
@@ -138,7 +138,7 @@ PLOT_GW <- function(GW_activity, state = NULL, method = NULL){
 
 
 #' PLOT_JOB
-#'
+#' @param state "state abbreviation" or null
 #' @param JOB_activity Output from GCAM_JOB()
 #' @import ggplot2 dplyr
 #'
@@ -190,7 +190,7 @@ PLOT_JOB <- function(JOB_activity, state = NULL){
 
 
 #' PLOT_JOB_TYPE
-#'
+#' @param state "state abbreviation" or null
 #' @param JOB_activity Output of GCAM_JOB()
 #' @import ggplot2 dplyr
 #' @return A trend plot of job by job type at the national level

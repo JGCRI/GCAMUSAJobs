@@ -1,5 +1,8 @@
 
-
+# This script is provided as a convenience tool for generating exogenous parameters that are stored in inst/extdata/ for use by the package.
+# Package functions do not automatically run Assumption.R. If users wish to modify any of the underlying assumptions
+# (for example, to align with a different GCAM version or a customized GCAM configuration), 
+# they must manually run this script to regenerate the corresponding inputs.
 # Constants ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CONV_EJ_KWH <- 277777777777.78

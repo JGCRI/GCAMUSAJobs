@@ -9,6 +9,8 @@ PLOT_GW(GW_activity, state = NULL, method = NULL)
 \arguments{
 \item{GW_activity}{Output from GCAM_GW()}
 
+\item{state}{"state abbreviation" or null}
+
 \item{method}{"Net" or "Total"}
 }
 \value{

@@ -8,6 +8,8 @@ PLOT_JOB(JOB_activity, state = NULL)
 }
 \arguments{
 \item{JOB_activity}{Output from GCAM_JOB()}
+
+\item{state}{"state abbreviation" or null}
 }
 \value{
 A trend plot of job by fuel technology and job type at the national level
