@@ -12,10 +12,10 @@ read.GCAM.csv(basename, na.strings = "")
 \item{na.strings}{set to ""}
 }
 \value{
-A data frame from raw csv file saved in the Assumptions/GCAM folder
+A data frame from raw csv file saved in the inst/extdata/GCAM folder
 }
 \description{
-read raw csv files from Assumptions/GCAM folder
+read raw csv files from inst/extdata/GCAM folder
 }
 \examples{
 \dontrun{

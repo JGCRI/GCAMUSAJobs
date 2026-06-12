@@ -1,7 +1,23 @@
+# This script is provided as a convenience tool for generating exogenous parameters that are stored in inst/extdata/ for use by the package.
+# Package functions do not automatically run Assumption.R. If users wish to modify any of the underlying assumptions
+# (for example, to align with a different GCAM version or a customized GCAM configuration), 
+# they must manually run this script to regenerate the corresponding inputs.
+
+# This script is provided as a courtesy for users who, in exceptional cases,
+# need to extract the relevant retirement/S-curve and O&M assumptions from
+# GCAM6-based GCAM-USA inputs. It reconstructs GCAM6-compatible assumption
+# objects, including state-level retirement/S-curve assumptions and fixed vs.
+# variable O&M shares, from older GCAM6 input tables.
+
+# Please note that GCAMUSAJobs is primarily developed and maintained for
+# GCAM-USA versions based on GCAM7 and later. We strongly recommend using
+# GCAM7 or newer versions, as they are better aligned with the current package
+# workflow and provide more reliable employment estimates. Support for GCAM6
+# and earlier versions is limited.
 # GCAM assumptions ----
 
 read.GCAM.csv <- function(basename, na.strings="") {
-  pathname <- file.path('Assumptions/GCAM', paste0(basename, ".csv"))
+  pathname <- file.path('inst/extdata/GCAM/GCAM6', paste0(basename, ".csv"))
   return( read.csv(pathname, na.strings=na.strings, stringsAsFactors=F, comment.char = "#") )
 }
 

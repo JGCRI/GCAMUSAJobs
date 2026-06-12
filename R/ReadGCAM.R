@@ -22,36 +22,75 @@
 #' }
 
 ReadGCAM <- function(filetype,
-                     input_path, # full path of the input file (db or .dat)
-                     db_name, # name of the db folder
+                     input_path = NULL, # full path of the input file/db folder or prj folder
+                     db_name = NULL,    # name of the db folder
                      query = system.file("extdata", "my_batch.xml", package = "GCAMUSAJobs"),
-                     scen_name, # name of the scenario of interest
-                     prj_name){ # name of a prj
+                     scen_name = NULL,  # name of the scenario of interest
+                     prj_name = NULL) { # name of the prj file
 
-  if(!filetype %in% c("db", "prj")){
-    print("Need a GCAM output databse: 'db' or an existing prj: 'dat'; Current input is not a valid input type")
-  } else{
-    if(filetype == "db"){ # if read from a GCAM output db
-      if(is.null(input_path)){
-        print("miss the path of GCAM output DB")} else{
-          if(is.null(db_name)){
-            print("miss db name")} else{
-              if(is.null(scen_name)){
-                print("miss the scenario name")} else{
-                  if(is.null(prj_name)) {
-                    print("miss the prj name")} else{
-                      # Load the rgcam project:
-                      conn <- rgcam::localDBConn(input_path, db_name, migabble = TRUE)
-                      prj <- rgcam::addScenario(conn,prj_name,scen_name,query)}
-                }
-            }
-        }
-    } else{ # read from an existing prj
-      if(is.null(prj_name)){
-        print("missing a prj name")
-      } else{
-        prj <- rgcam::loadProject(paste0(input_path,'/',prj_name))}
-    }
+  # Check filetype
+  if (missing(filetype) || is.null(filetype)) {
+    stop("`filetype` is required. Please use either 'db' or 'prj'.", call. = FALSE)
   }
+
+  if (!filetype %in% c("db", "prj")) {
+    stop(
+      "`filetype` must be either 'db' for a GCAM output database or 'prj' for an existing rgcam project. ",
+      "Current input is: '", filetype, "'.",
+      call. = FALSE
+    )
+  }
+
+  # Check common required input
+  if (is.null(input_path)) {
+    stop("`input_path` is required.", call. = FALSE)
+  }
+
+  if (!dir.exists(input_path)) {
+    stop("`input_path` does not exist: ", input_path, call. = FALSE)
+  }
+
+  # Read from GCAM output database
+  if (filetype == "db") {
+
+    if (is.null(db_name)) {
+      stop("`db_name` is required when `filetype = 'db'`.", call. = FALSE)
+    }
+
+    if (is.null(scen_name)) {
+      stop("`scen_name` is required when `filetype = 'db'`.", call. = FALSE)
+    }
+
+    if (is.null(prj_name)) {
+      stop("`prj_name` is required when `filetype = 'db'`.", call. = FALSE)
+    }
+
+    if (query == "") {
+      stop("The default query file was not found. Please provide a valid `query` file path.", call. = FALSE)
+    }
+
+    if (!file.exists(query)) {
+      stop("The query file does not exist: ", query, call. = FALSE)
+    }
+
+    conn <- rgcam::localDBConn(input_path, db_name, migabble = TRUE)
+    prj <- rgcam::addScenario(conn, prj_name, scen_name, query)
+
+  } else {
+
+    # Read from existing rgcam project
+    if (is.null(prj_name)) {
+      stop("`prj_name` is required when `filetype = 'prj'`.", call. = FALSE)
+    }
+
+    prj_path <- file.path(input_path, prj_name)
+
+    if (!file.exists(prj_path)) {
+      stop("The rgcam project file does not exist: ", prj_path, call. = FALSE)
+    }
+
+    prj <- rgcam::loadProject(prj_path)
+  }
+
   return(prj)
 }
