@@ -9,7 +9,7 @@ Authors@R: c(
     person("Ying", "Zhang", , "ying.zhang@pnnl.gov", role = c("aut","cre"),
            comment = c(ORCID = "0000-0002-0036-7502"))
            )
-Description: This packge projects state-level power sector employment by fuel type and occupation, based on GCAM-USA power sector output.
+Description: This package projects state-level power sector employment by fuel type and occupation, based on GCAM-USA power sector output.
 License: BSD_2_clause + file LICENSE
 URL: https://jgcri.github.io/GCAMUSAJobs
 Encoding: UTF-8
