@@ -29,9 +29,7 @@
 <!-------------------------->
 <!-------------------------->
 
-Di Sheng, Brian O'Neill, Stephanie Morris, Matthew Binsted, and Ying Zhang. 2026. GCAMUSAJob: 
-An R package for employment projections based on GCAM-USA power sector outcomes. 
-(In progress) *Journal of Open Source Software*, DOI: XXXX
+Di Sheng, Brian O'Neill, Stephanie Morris, Matthew Binsted, and Ying Zhang. 2026. GCAMUSAJobs: An R package for employment projections based on GCAM-USA power sector outcomes. *Journal of Open Source Software*, 11(124), 10142. , DOI: [XXXX](https://doi.org/10.21105/joss.10142)
 
 [Back to Contents](#Contents)
 
