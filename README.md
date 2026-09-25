@@ -63,7 +63,7 @@ Step-by-Step Example: https://jgcri.github.io/GCAMUSAJobs/articles/package_vigne
 
 Kennedy, K.M., S. Vo, K. Vangelov, B. Buddi, S. Smith, J. Lou, R. Cui, and N. Hultman (2024). 
 “The Renewable Energy Transition in Maryland: Implications for Energy Generating Facilities and Small Businesses.” 
-Center for Global Sustainability, University of Maryland. 50 pp. [Link](https://mde.maryland.gov/programs/air/ClimateChange/MCCC/Doclib_EIR/The%20Renewable%20Energy%20Transition%20in%20Maryland,%20Energy%20Industry%20Revitalization%20Working%20Group%20--%20Report_Final.pdf)
+Center for Global Sustainability, University of Maryland. 50 pp. [Link](https://cgs.umd.edu/research-impact/publications/renewable-energy-transition-maryland-implications-energy-generating)
 
 [Back to Contents](#Contents)
 
